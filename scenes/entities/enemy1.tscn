@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyu6rwuq3dtid"]
+
+[ext_resource type="Script" uid="uid://dpm6eqdmqueug" path="res://scripts/entity/enemy.gd" id="1_ppmo8"]
+[ext_resource type="Texture2D" uid="uid://dv5hfro7118oj" path="res://assets/enemy1.png" id="2_x5h6f"]
+[ext_resource type="Script" uid="uid://b16k7gsqc3uhj" path="res://scripts/bee/entity-animation-component.gd" id="3_n665k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lowyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x5h6f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppmo8"]
+size = Vector2(16, 16)
+
+[node name="enemy" type="Area2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_ppmo8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lowyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ppmo8")
+
+[node name="EntityAnimationComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "animation")]
+script = ExtResource("3_n665k")
+actor = NodePath("..")
+animation = NodePath("../AnimatedSprite2D")
+options_dictionary = Dictionary[int, Variant]({
+0: 10.0
+})
+metadata/_custom_type_script = "uid://b16k7gsqc3uhj"
+
+[node name="Timer" type="Timer" parent="."]

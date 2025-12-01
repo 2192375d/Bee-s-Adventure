@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://deauys010c2ws"]
+
+[ext_resource type="Script" uid="uid://bklspmgxgykx6" path="res://scripts/game/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://b52fcjo0qajoc" path="res://scenes/bee.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bqdalj4yducf1" path="res://scripts/game/in-game-check.gd" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://dbdo34hadrpnn" path="res://scripts/game/chapters/chapter1.gd" id="4_lbhrr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8cj0n"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8cj0n"]
+resource_name = "horizontal edge line resource"
+b = Vector2(664, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uwrxv"]
+resource_name = "vertical edge line resource"
+b = Vector2(0, 760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrxv"]
+size = Vector2(1088, 1184)
+
+[node name="game" type="Node2D" node_paths=PackedStringArray("bee", "chapters")]
+light_mask = 5
+script = ExtResource("1_lnu2h")
+bee = NodePath("bee")
+chapters = [NodePath("chapters/chapter1")]
+
+[node name="background" type="TextureRect" parent="."]
+modulate = Color(0.27284554, 0.27284554, 0.2728455, 1)
+offset_right = 640.0
+offset_bottom = 736.0
+texture = SubResource("CanvasTexture_8cj0n")
+
+[node name="bee" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(322, 656)
+spawn_point = Vector2(320, 640)
+
+[node name="edge-lines" type="Node2D" parent="."]
+auto_translate_mode = 2
+visible = false
+
+[node name="edge-line1" type="StaticBody2D" parent="edge-lines"]
+position = Vector2(-12, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge-lines/edge-line1"]
+shape = SubResource("SegmentShape2D_8cj0n")
+
+[node name="edge-line2" type="StaticBody2D" parent="edge-lines"]
+position = Vector2(-4, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge-lines/edge-line2"]
+shape = SubResource("SegmentShape2D_uwrxv")
+
+[node name="edge-line3" type="StaticBody2D" parent="edge-lines"]
+position = Vector2(-12, 748)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge-lines/edge-line3"]
+shape = SubResource("SegmentShape2D_8cj0n")
+
+[node name="edge-line4" type="StaticBody2D" parent="edge-lines"]
+position = Vector2(642, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge-lines/edge-line4"]
+position = Vector2(1, 0)
+shape = SubResource("SegmentShape2D_uwrxv")
+
+[node name="inGameCheck" type="Area2D" parent="."]
+visible = false
+position = Vector2(320, 368)
+script = ExtResource("3_lnu2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="inGameCheck"]
+shape = SubResource("RectangleShape2D_uwrxv")
+debug_color = Color(0.6229986, 0.35662666, 0.99245244, 0.41960785)
+
+[node name="chapters" type="Node" parent="."]
+
+[node name="chapter1" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
+script = ExtResource("4_lbhrr")
+timer = NodePath("../Timer")
+
+[node name="Timer" type="Timer" parent="chapters"]
+one_shot = true

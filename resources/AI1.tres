@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AIResource" load_steps=5 format=3 uid="uid://c4swjs3t4uxti"]
+
+[ext_resource type="Script" uid="uid://cuxk5es1e8xvw" path="res://scripts/entity/actions/action.gd" id="1_iybpf"]
+[ext_resource type="Resource" uid="uid://17md3koqs04n" path="res://resources/actions/action-enter1.tres" id="2_twal0"]
+[ext_resource type="Script" uid="uid://cqlrfm7is5dko" path="res://scripts/entity/ai-resource.gd" id="3_iybpf"]
+[ext_resource type="Resource" uid="uid://bgn646i82m38u" path="res://resources/actions/action-exit1.tres" id="3_om222"]
+
+[resource]
+script = ExtResource("3_iybpf")
+actions = Array[ExtResource("1_iybpf")]([ExtResource("2_twal0"), ExtResource("3_om222")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"

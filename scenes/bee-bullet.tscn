@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://buts3pip8f7ji"]
+
+[ext_resource type="Script" uid="uid://comikebg4mb2k" path="res://scripts/bee-bullet.gd" id="1_pinja"]
+[ext_resource type="Texture2D" uid="uid://cv1jfah0eoejo" path="res://assets/bee/bee-bullet.png" id="1_yobux"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dvvg"]
+radius = 8.0
+
+[node name="bee-bullet" type="Area2D"]
+script = ExtResource("1_pinja")
+speed = 800.0
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4dvvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yobux")
