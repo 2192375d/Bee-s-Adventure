@@ -8,6 +8,7 @@ var hp: int
 var shape: Shape2D
 
 func _ready():
+	#ai_resource.actor = self
 	for action in ai_resource.actions:
 		action.actor = self
 		action.timer = timer
@@ -34,8 +35,9 @@ func _process(delta: float):
 
 func _on_actions_complete() -> void:
 	
-	print("here")
-	self.queue_free()
+	if (!in_border()):
+		print("here")
+		self.queue_free()
 
 func get_hit(damage: int) -> void:
 	animation_component.shine_animation()
