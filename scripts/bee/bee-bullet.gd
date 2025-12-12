@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 		or position.x - radius > Global.gameSizeX
 		or position.y + radius < 0
 		or position.y - radius > Global.gameSizeY):
-			#print("bye!")
-			queue_free()
+		#print("bye!")
+		queue_free()
 
 func on_area_entered(area: Area2D) -> void:
 	if area is Enemy:

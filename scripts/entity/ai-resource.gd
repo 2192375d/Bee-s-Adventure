@@ -12,7 +12,6 @@ func start_AI() -> void:
 		action.start_action()
 		currentAction = action
 		await action.timer.timeout
-		
 	
 	actions_complete.emit()
 

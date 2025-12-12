@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b6lch5wwkraq7" path="res://assets/bee/bee-down-right.png" id="5_011rt"]
 [ext_resource type="Script" uid="uid://r85cri203cjn" path="res://scripts/bee/animation-component.gd" id="6_nkr4b"]
 [ext_resource type="Texture2D" uid="uid://cyvdd0xeublfd" path="res://assets/bee/hitbox-dot.png" id="8_ykkpv"]
-[ext_resource type="Script" uid="uid://dj50mkbj06f6q" path="res://scripts/shoot-component.gd" id="11_011rt"]
+[ext_resource type="Script" uid="uid://dj50mkbj06f6q" path="res://scripts/bee/shoot-component.gd" id="11_011rt"]
 [ext_resource type="PackedScene" uid="uid://buts3pip8f7ji" path="res://scenes/bee-bullet.tscn" id="12_ovfpg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qf6nb"]

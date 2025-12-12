@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_tga55")
-speed_curve = ExtResource("3_tga55")
+position_curve = ExtResource("3_tga55")
 path_scene = ExtResource("1_tga55")
-duration = 1.2
+duration = 2.5
 metadata/_custom_type_script = "uid://n8bhrlq0undu"

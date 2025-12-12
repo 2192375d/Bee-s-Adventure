@@ -2,20 +2,14 @@ extends Entity
 
 class_name Enemy
 var animation_component: EntityAnimationComponent
-var timer: Timer
+
 var hp: int
 
-var shape: Shape2D
+var half_w: float = 0
+var half_h: float = 0
 
-func _ready():
-	#ai_resource.actor = self
-	for action in ai_resource.actions:
-		action.actor = self
-		action.timer = timer
-	
-	self.shape = $CollisionShape2D.shape
-	
-	ai_resource.start_AI()
+func _ready() -> void:
+	super()
 	ai_resource.actions_complete.connect(_on_actions_complete)
 
 func set_enemy(spawnpoint: Vector2, new_hp: int, new_ai_resource: AIResource) -> void:
@@ -24,6 +18,12 @@ func set_enemy(spawnpoint: Vector2, new_hp: int, new_ai_resource: AIResource) ->
 	hp = new_hp
 	timer = $Timer
 	animation_component = $EntityAnimationComponent
+	
+	var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")
+	
+	if (collision_shape):
+		half_w = collision_shape.shape.extents.x
+		half_h = collision_shape.shape.extents.y
 
 func _process(delta: float):
 	ai_resource.update(delta)
@@ -34,10 +34,17 @@ func _process(delta: float):
 		hide()
 
 func _on_actions_complete() -> void:
-	
 	if (!in_border()):
-		print("here")
 		self.queue_free()
+
+func in_border() -> bool:
+	if (
+		position.x - half_w >= 0
+		and position.x + half_w <= Global.gameSizeX
+		and position.y - half_h >= 0
+		and position.y + half_h <= Global.gameSizeY):
+		return true
+	return false
 
 func get_hit(damage: int) -> void:
 	animation_component.shine_animation()

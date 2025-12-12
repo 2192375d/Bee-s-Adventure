@@ -1,21 +1,14 @@
 @abstract class_name Entity extends Area2D
 
 var ai_resource: AIResource
+var timer: Timer
 
-func in_border() -> bool:
-	var half_w: float = 0
-	var half_h: float = 0
-	
-	var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")
-	
-	if (collision_shape):
-		half_w = collision_shape.shape.extents.x
-		half_h = collision_shape.shape.extents.y
-	
-	if (
-		position.x - half_w >= 0
-		and position.x + half_w <= Global.gameSizeX
-		and position.y - half_h >= 0
-		and position.y + half_h <= Global.gameSizeY):
-		return true
-	return false
+func _ready():
+	#ai_resource.actor = self
+	for action in ai_resource.actions:
+		action.actor = self
+		action.timer = timer
+	#shape = $CollisionShape2D.shape
+	ai_resource.start_AI()
+
+@abstract func _on_actions_complete() -> void
