@@ -2,6 +2,7 @@ extends Resource
 
 class_name AIResource
 @export var actions: Array[ActionResource]
+#var actor: Enemy
 
 var currentAction: ActionResource
 signal actions_complete

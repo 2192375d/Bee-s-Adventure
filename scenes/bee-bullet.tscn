@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://buts3pip8f7ji"]
 
-[ext_resource type="Script" uid="uid://comikebg4mb2k" path="res://scripts/bee-bullet.gd" id="1_pinja"]
+[ext_resource type="Script" uid="uid://comikebg4mb2k" path="res://scripts/bee/bee-bullet.gd" id="1_pinja"]
 [ext_resource type="Texture2D" uid="uid://cv1jfah0eoejo" path="res://assets/bee/bee-bullet.png" id="1_yobux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dvvg"]

@@ -1,0 +1,16 @@
+res://scenes/entities/paths/path-enter1.tscn
+res://scenes/main-game.tscn
+res://scripts/entity/actions/basics/action-follow.gd
+res://scripts/entity/actions/action.gd
+res://resources/actions/action-enter1.tres
+res://scripts/game/chapters/chapter1.gd
+res://resources/enemy1AI.tres
+res://resources/enemy1AI-rev.tres
+res://resources/actions/action-enter1-rev.tres
+res://scripts/entity/enemy.gd
+res://scripts/entity/actions/basics/action-aimed-attack.gd
+res://resources/actions/action-aimed-attack1.tres
+res://scripts/bullet/bullet.gd
+res://scenes/entities/paths/path-exit1.tscn
+res://resources/actions/action-exit1.tres
+res://scenes/entities/bullet-shard.tscn

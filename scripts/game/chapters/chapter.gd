@@ -12,7 +12,6 @@ func spawn_enemy(enemy_scene: PackedScene, spawn_point: Vector2, hp: int, ai_res
 	var ai_copy: AIResource = ai_resource.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	
 	enemy.set_enemy(spawn_point, hp, ai_copy)
-	#print("here")
 	Global.game.add_child(enemy)
 
 func wait(seconds: float) -> void:

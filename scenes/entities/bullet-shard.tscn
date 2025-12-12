@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck5no7yisp46c"]
+
+[ext_resource type="Script" uid="uid://bvil8g2ynm4li" path="res://scripts/bullet/bullet.gd" id="1_mcht0"]
+[ext_resource type="Texture2D" uid="uid://b521wd8x7tec0" path="res://assets/shard.png" id="1_mtjc8"]
+
+[node name="bullet-shard" type="Area2D"]
+position = Vector2(0, 0.5)
+rotation = 1.5707964
+script = ExtResource("1_mcht0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mtjc8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, 6, 3, 3, 3, -4, 1, -7, -1, -7, -3, -4, -3, 3, -1, 6)

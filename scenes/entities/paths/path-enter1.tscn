@@ -3,7 +3,7 @@
 [sub_resource type="Curve2D" id="Curve2D_o7av5"]
 bake_interval = 512.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 128)
+"points": PackedVector2Array(-120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 128)
 }
 point_count = 2
 
@@ -11,3 +11,4 @@ point_count = 2
 curve = SubResource("Curve2D_o7av5")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = 0.4636476
