@@ -8,6 +8,8 @@ var hp: int
 var half_w: float = 0
 var half_h: float = 0
 
+var complete: bool = false
+
 func _ready() -> void:
 	super()
 	ai_resource.actions_complete.connect(_on_actions_complete)
@@ -26,7 +28,8 @@ func set_enemy(spawnpoint: Vector2, new_hp: int, new_ai_resource: AIResource) ->
 		half_h = collision_shape.shape.extents.y
 
 func _process(delta: float):
-	ai_resource.update(delta)
+	if !complete:
+		ai_resource.update(delta)
 	
 	if (in_border()):
 		show()
@@ -34,6 +37,7 @@ func _process(delta: float):
 		hide()
 
 func _on_actions_complete() -> void:
+	complete = true
 	if (!in_border()):
 		self.queue_free()
 

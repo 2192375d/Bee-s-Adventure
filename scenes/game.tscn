@@ -1,9 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://deauys010c2ws"]
+[gd_scene load_steps=15 format=3 uid="uid://deauys010c2ws"]
 
 [ext_resource type="Script" uid="uid://bklspmgxgykx6" path="res://scripts/game/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://b52fcjo0qajoc" path="res://scenes/bee.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bqdalj4yducf1" path="res://scripts/game/in-game-check.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://dbdo34hadrpnn" path="res://scripts/game/chapters/chapter1.gd" id="4_lbhrr"]
+[ext_resource type="Resource" uid="uid://dkneefr0cfp7l" path="res://resources/enemy1AI-rev.tres" id="5_iywne"]
+[ext_resource type="Resource" uid="uid://c4swjs3t4uxti" path="res://resources/enemy1AI.tres" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dyu6rwuq3dtid" path="res://scenes/entities/enemy1.tscn" id="5_u5sy4"]
+[ext_resource type="Script" uid="uid://c7grpvtxy5g5o" path="res://scripts/game/chapters/chapter2.gd" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://bjabjm1qr423j" path="res://scenes/entities/enemy2.tscn" id="9_0tnpc"]
+[ext_resource type="Resource" uid="uid://r3v4wqh1bueq" path="res://resources/enemy2AI.tres" id="10_vtaks"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8cj0n"]
 
@@ -22,7 +28,7 @@ size = Vector2(1088, 1184)
 light_mask = 5
 script = ExtResource("1_lnu2h")
 bee = NodePath("bee")
-chapters = [NodePath("chapters/chapter1")]
+chapters = [NodePath("chapters/chapter1"), NodePath("chapters/chapter2")]
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(0.27284554, 0.27284554, 0.2728455, 1)
@@ -76,6 +82,15 @@ debug_color = Color(0.6229986, 0.35662666, 0.99245244, 0.41960785)
 
 [node name="chapter1" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
 script = ExtResource("4_lbhrr")
+enemy_scene1 = ExtResource("5_u5sy4")
+AI_resource1 = ExtResource("5_p57ef")
+AI_resource1_rev = ExtResource("5_iywne")
+timer = NodePath("../Timer")
+
+[node name="chapter2" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
+script = ExtResource("8_gee14")
+enemy_scene1 = ExtResource("9_0tnpc")
+AI_resource2 = ExtResource("10_vtaks")
 timer = NodePath("../Timer")
 
 [node name="Timer" type="Timer" parent="chapters"]

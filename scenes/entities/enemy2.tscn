@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjabjm1qr423j"]
+
+[ext_resource type="Script" uid="uid://dpm6eqdmqueug" path="res://scripts/entity/enemy.gd" id="1_3ibj7"]
+[ext_resource type="Texture2D" uid="uid://cq2uv4ipql8aw" path="res://assets/enemy2.png" id="2_4leqv"]
+[ext_resource type="Script" uid="uid://b16k7gsqc3uhj" path="res://scripts/bee/entity-animation-component.gd" id="3_4leqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uro3m"]
+atlas = ExtResource("2_4leqv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjftd"]
+atlas = ExtResource("2_4leqv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h40nh"]
+atlas = ExtResource("2_4leqv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovx8y"]
+atlas = ExtResource("2_4leqv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82yho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uro3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjftd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h40nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovx8y")
+}],
+"loop": true,
+"name": &"play",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ibj7"]
+size = Vector2(16, 16)
+
+[node name="enemy2" type="Area2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_3ibj7")
+metadata/_custom_type_script = "uid://dpm6eqdmqueug"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_82yho")
+animation = &"play"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3ibj7")
+
+[node name="EntityAnimationComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "animation")]
+script = ExtResource("3_4leqv")
+actor = NodePath("..")
+animation = NodePath("../AnimatedSprite2D")
+options_dictionary = Dictionary[int, Variant]({
+1: "play"
+})
+metadata/_custom_type_script = "uid://b16k7gsqc3uhj"
+
+[node name="Timer" type="Timer" parent="."]

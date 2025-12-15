@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ActionFollow" load_steps=4 format=3 uid="uid://b0pvcb3y3aprb"]
+
+[ext_resource type="PackedScene" uid="uid://bukou2qbsw1yi" path="res://scenes/entities/paths/path-exit2.tscn" id="1_lrj8w"]
+[ext_resource type="Curve" uid="uid://dk28uq32yla8u" path="res://resources/speed-curves/straight-move.tres" id="2_h4g3h"]
+[ext_resource type="Script" uid="uid://n8bhrlq0undu" path="res://scripts/entity/actions/basics/action-follow.gd" id="3_spvfd"]
+
+[resource]
+script = ExtResource("3_spvfd")
+position_curve = ExtResource("2_h4g3h")
+path_scene = ExtResource("1_lrj8w")
+duration = 1.5
+metadata/_custom_type_script = "uid://n8bhrlq0undu"

@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="AIResource" load_steps=6 format=3 uid="uid://dkneefr0cfp7l"]
+[gd_resource type="Resource" script_class="AIResource" load_steps=7 format=3 uid="uid://dkneefr0cfp7l"]
 
 [ext_resource type="Script" uid="uid://cuxk5es1e8xvw" path="res://scripts/entity/actions/action.gd" id="1_vp1um"]
-[ext_resource type="Resource" uid="uid://b7oolqloig83f" path="res://resources/actions/action-enter1-rev.tres" id="2_la8ad"]
-[ext_resource type="Resource" uid="uid://c0h0ib3g1hork" path="res://resources/actions/action-aimed-attack1.tres" id="3_oriyx"]
+[ext_resource type="Resource" uid="uid://b7oolqloig83f" path="res://resources/actions/action-follow/action-enter1-rev.tres" id="2_la8ad"]
+[ext_resource type="Resource" uid="uid://c4xkpy47yn18c" path="res://resources/actions/action-wait1.tres" id="3_dqutg"]
+[ext_resource type="Resource" uid="uid://c0h0ib3g1hork" path="res://resources/actions/action-attack-aimed1.tres" id="3_oriyx"]
 [ext_resource type="Script" uid="uid://cqlrfm7is5dko" path="res://scripts/entity/ai-resource.gd" id="4_dqutg"]
-[ext_resource type="Resource" uid="uid://6npk1d6pg65s" path="res://resources/actions/action-exit1-rev.tres" id="4_la8ad"]
+[ext_resource type="Resource" uid="uid://6npk1d6pg65s" path="res://resources/actions/action-follow/action-exit1-rev.tres" id="4_la8ad"]
 
 [resource]
 script = ExtResource("4_dqutg")
-actions = Array[ExtResource("1_vp1um")]([ExtResource("2_la8ad"), ExtResource("3_oriyx"), ExtResource("4_la8ad")])
+actions = Array[ExtResource("1_vp1um")]([ExtResource("2_la8ad"), ExtResource("3_dqutg"), ExtResource("3_oriyx"), ExtResource("4_la8ad")])
 metadata/_custom_type_script = "uid://cqlrfm7is5dko"

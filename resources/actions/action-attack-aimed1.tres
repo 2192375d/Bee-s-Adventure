@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ActionAimedAttack" load_steps=3 format=3 uid="uid://c0h0ib3g1hork"]
 
 [ext_resource type="PackedScene" uid="uid://ck5no7yisp46c" path="res://scenes/entities/bullet-shard.tscn" id="1_tkr06"]
-[ext_resource type="Script" uid="uid://d1is2cqaqw85y" path="res://scripts/entity/actions/basics/action-aimed-attack.gd" id="2_v3hk3"]
+[ext_resource type="Script" uid="uid://d1is2cqaqw85y" path="res://scripts/entity/actions/basics/action-attack-aimed.gd" id="2_v3hk3"]
 
 [resource]
 script = ExtResource("2_v3hk3")
 interval = 0.5
 speed = 300.0
 bullet_scene = ExtResource("1_tkr06")
-duration = 3.0
+duration = 2.5
 metadata/_custom_type_script = "uid://d1is2cqaqw85y"

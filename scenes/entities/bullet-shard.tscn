@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b521wd8x7tec0" path="res://assets/shard.png" id="1_mtjc8"]
 
 [node name="bullet-shard" type="Area2D"]
-position = Vector2(0, 0.5)
+position = Vector2(-0.5, 0)
 rotation = 1.5707964
 script = ExtResource("1_mcht0")
 
