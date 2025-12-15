@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ActionAttackSurround1" load_steps=3 format=3 uid="uid://b7bq0iycrrjk8"]
+
+[ext_resource type="PackedScene" uid="uid://ck5no7yisp46c" path="res://scenes/entities/bullet-shard.tscn" id="1_eqweb"]
+[ext_resource type="Script" uid="uid://cfq2j78gb8rx7" path="res://scripts/entity/actions/basics/action-attack-surround1.gd" id="2_7gftq"]
+
+[resource]
+script = ExtResource("2_7gftq")
+attack_interval = 0.2
+shot_interval = 0.1
+speed = 400.0
+bullet_scene = ExtResource("1_eqweb")
+duration = 5.0
+metadata/_custom_type_script = "uid://cfq2j78gb8rx7"

@@ -1,3 +1,6 @@
+Curve
 ActionFollow
 AIResource
+ActionAttackSurround1
+ActionWait
 ActionAimedAttack

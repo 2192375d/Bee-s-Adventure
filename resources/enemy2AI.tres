@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AIResource" load_steps=6 format=3 uid="uid://r3v4wqh1bueq"]
+
+[ext_resource type="Script" uid="uid://cuxk5es1e8xvw" path="res://scripts/entity/actions/action.gd" id="1_q17iy"]
+[ext_resource type="Resource" uid="uid://b7bq0iycrrjk8" path="res://resources/actions/action-attack-surround1.tres" id="2_ogah6"]
+[ext_resource type="Resource" uid="uid://cqp68rdqlx8lw" path="res://resources/actions/action-follow/action-enter2.tres" id="2_t8cwn"]
+[ext_resource type="Script" uid="uid://cqlrfm7is5dko" path="res://scripts/entity/ai-resource.gd" id="3_t8cwn"]
+[ext_resource type="Resource" uid="uid://6npk1d6pg65s" path="res://resources/actions/action-follow/action-exit1-rev.tres" id="4_t8cwn"]
+
+[resource]
+script = ExtResource("3_t8cwn")
+actions = Array[ExtResource("1_q17iy")]([ExtResource("2_t8cwn"), ExtResource("2_ogah6"), ExtResource("4_t8cwn")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"

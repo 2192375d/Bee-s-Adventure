@@ -1,4 +1,7 @@
-res://resources/actions
+res://resources/speed-curves/
+res://resources/actions/
 res://resources
-res://scripts/bullet
+res://resources/actions
 res://scenes/entities
+res://assets
+res://scripts/bullet

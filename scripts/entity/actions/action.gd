@@ -20,9 +20,14 @@ func follow_path(position_curve: Curve, path_follow: PathFollow2D) -> void:
 	path_follow.progress_ratio = position_curve.sample(ratio)
 	actor.global_position = path_follow.global_position
 
-
-func align_path_start(path: Path2D):
+func align_path_start(path: Path2D) -> void:
 	var curve = path.curve
 	var local_start = curve.get_point_position(0)
 	var global_start = path.to_global(local_start)
 	path.global_position += actor.global_position - global_start
+
+func get_timer() -> Timer:
+	var new_timer: Timer = Timer.new()
+	new_timer.autostart = false
+	new_timer.one_shot = true
+	return new_timer
