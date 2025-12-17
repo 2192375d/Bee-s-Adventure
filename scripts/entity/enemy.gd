@@ -14,11 +14,14 @@ func _ready() -> void:
 	super()
 	ai_resource.actions_complete.connect(_on_actions_complete)
 
-func set_enemy(spawnpoint: Vector2, new_hp: int, new_ai_resource: AIResource) -> void:
+func set_enemy(spawnpoint: Vector2, 
+			   new_hp: int, 
+			   new_ai_resource: AIResource,
+			   ) -> void:
 	ai_resource = new_ai_resource
 	position = spawnpoint
 	hp = new_hp
-	timer = $Timer
+	#timer = $Timer
 	animation_component = $EntityAnimationComponent
 	
 	var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")

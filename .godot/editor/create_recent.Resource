@@ -1,5 +1,5 @@
-Curve
 ActionFollow
+Curve
 AIResource
 ActionAttackSurround1
 ActionWait

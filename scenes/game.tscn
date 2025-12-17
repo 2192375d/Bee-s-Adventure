@@ -1,15 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://deauys010c2ws"]
+[gd_scene load_steps=55 format=3 uid="uid://deauys010c2ws"]
 
 [ext_resource type="Script" uid="uid://bklspmgxgykx6" path="res://scripts/game/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://b52fcjo0qajoc" path="res://scenes/bee.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bqdalj4yducf1" path="res://scripts/game/in-game-check.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://dbdo34hadrpnn" path="res://scripts/game/chapters/chapter1.gd" id="4_lbhrr"]
-[ext_resource type="Resource" uid="uid://dkneefr0cfp7l" path="res://resources/enemy1AI-rev.tres" id="5_iywne"]
-[ext_resource type="Resource" uid="uid://c4swjs3t4uxti" path="res://resources/enemy1AI.tres" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dyu6rwuq3dtid" path="res://scenes/entities/enemy1.tscn" id="5_u5sy4"]
 [ext_resource type="Script" uid="uid://c7grpvtxy5g5o" path="res://scripts/game/chapters/chapter2.gd" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://bjabjm1qr423j" path="res://scenes/entities/enemy2.tscn" id="9_0tnpc"]
+[ext_resource type="Resource" uid="uid://c0h0ib3g1hork" path="res://resources/actions/action-attack-aimed1.tres" id="10_ir15t"]
 [ext_resource type="Resource" uid="uid://r3v4wqh1bueq" path="res://resources/enemy2AI.tres" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://bw01r85snlnng" path="res://scripts/game/chapters/chapter-t1.gd" id="11_kvpfn"]
+[ext_resource type="Script" uid="uid://cuxk5es1e8xvw" path="res://scripts/entity/actions/action.gd" id="12_ca42v"]
+[ext_resource type="PackedScene" uid="uid://c1hpuii2quq2a" path="res://scenes/entities/paths/path-move1.tscn" id="13_rysoc"]
+[ext_resource type="PackedScene" uid="uid://wmhjt247gh12" path="res://scenes/entities/paths/path-move2.tscn" id="14_1kice"]
+[ext_resource type="Curve" uid="uid://dk28uq32yla8u" path="res://resources/speed-curves/straight-move.tres" id="14_rysoc"]
+[ext_resource type="Curve" uid="uid://dc1ua63wulbwr" path="res://resources/speed-curves/smooth-move.tres" id="14_ssvqc"]
+[ext_resource type="Script" uid="uid://n8bhrlq0undu" path="res://scripts/entity/actions/basics/action-follow.gd" id="15_264po"]
+[ext_resource type="Script" uid="uid://cpa4eomrjq4ni" path="res://scripts/entity/actions/basics/action-run-multiple.gd" id="15_ssvqc"]
+[ext_resource type="Script" uid="uid://cqlrfm7is5dko" path="res://scripts/entity/ai-resource.gd" id="16_1kice"]
+[ext_resource type="PackedScene" uid="uid://ck5no7yisp46c" path="res://scenes/entities/bullet-shard.tscn" id="16_5newe"]
+[ext_resource type="Script" uid="uid://d1is2cqaqw85y" path="res://scripts/entity/actions/basics/action-attack-aimed.gd" id="17_37s47"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8cj0n"]
 
@@ -24,11 +34,222 @@ b = Vector2(0, 760)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrxv"]
 size = Vector2(1088, 1184)
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("bee", "chapters")]
+[sub_resource type="Curve2D" id="Curve2D_o7av5"]
+_data = {
+"points": PackedVector2Array(-120, 0, 250, 0, 0, 0, 0, 0, 0, 0, 256, 128)
+}
+point_count = 2
+
+[sub_resource type="PackedScene" id="PackedScene_ir15t"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("path", "Path2D", "curve", "PathFollow2D", "PathFollow2D"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 0, 0),
+"variants": [SubResource("Curve2D_o7av5")],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_ca42v"]
+_data = [Vector2(0, 0), 0.0, 2.7512748, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_1kice"]
+script = ExtResource("15_264po")
+position_curve = SubResource("Curve_ca42v")
+path_scene = SubResource("PackedScene_ir15t")
+displacement = Vector2(256, 128)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_sww3w"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(600, 32)
+duration = 3.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_qnb83"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_1kice"), ExtResource("10_ir15t"), SubResource("Resource_sww3w")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="Resource" id="Resource_rysoc"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(-128, 128)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="PackedScene" id="PackedScene_ca42v"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("path", "Path2D", "curve", "PathFollow2D", "PathFollow2D"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 0, 0),
+"variants": [SubResource("Curve2D_o7av5")],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_rysoc"]
+_data = [Vector2(0, 0), 0.0, 2.7512748, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_suyxu"]
+script = ExtResource("15_264po")
+position_curve = SubResource("Curve_rysoc")
+path_scene = SubResource("PackedScene_ca42v")
+displacement = Vector2(-600, 32)
+duration = 3.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_ssvqc"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_rysoc"), ExtResource("10_ir15t"), SubResource("Resource_suyxu")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="Resource" id="Resource_ca42v"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(128, 128)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_bt5mj"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(600, 32)
+duration = 3.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_264po"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_ca42v"), ExtResource("10_ir15t"), SubResource("Resource_bt5mj")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="Curve" id="Curve_5newe"]
+_data = [Vector2(0, 0), 0.0, 2.7512748, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_sgl2t"]
+script = ExtResource("15_264po")
+position_curve = SubResource("Curve_5newe")
+path_scene = ExtResource("14_1kice")
+displacement = Vector2(-90, 160)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_qouja"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(-600, 32)
+duration = 3.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_e1j6l"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_sgl2t"), ExtResource("10_ir15t"), SubResource("Resource_qouja")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="Resource" id="Resource_ir15t"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(64, 128)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_wljb1"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(600, 32)
+duration = 3.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_pl11u"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_ir15t"), ExtResource("10_ir15t"), SubResource("Resource_wljb1")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="Resource" id="Resource_v2yb1"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(-64, 128)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_js0lu"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(-600, 32)
+duration = 3.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_bhx41"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_v2yb1"), ExtResource("10_ir15t"), SubResource("Resource_js0lu")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="Resource" id="Resource_gxtfn"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_rysoc")
+path_scene = ExtResource("14_1kice")
+displacement = Vector2(-700, 128)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_twgab"]
+script = ExtResource("17_37s47")
+interval = 0.07
+speed = 700.0
+bullet_scene = ExtResource("16_5newe")
+duration = 2.0
+metadata/_custom_type_script = "uid://d1is2cqaqw85y"
+
+[sub_resource type="Resource" id="Resource_02fa5"]
+script = ExtResource("15_ssvqc")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_gxtfn"), SubResource("Resource_twgab")])
+duration = 2.0
+metadata/_custom_type_script = "uid://cpa4eomrjq4ni"
+
+[sub_resource type="Resource" id="Resource_nepv3"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_02fa5")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="Resource" id="Resource_5newe"]
+script = ExtResource("15_264po")
+position_curve = ExtResource("14_ssvqc")
+path_scene = ExtResource("13_rysoc")
+displacement = Vector2(256, 256)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_37s47"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_5newe")])
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[node name="game" type="Node2D" node_paths=PackedStringArray("bee", "chapters", "other_chapters")]
 light_mask = 5
 script = ExtResource("1_lnu2h")
 bee = NodePath("bee")
 chapters = [NodePath("chapters/chapter1"), NodePath("chapters/chapter2")]
+other_chapters = [NodePath("chapters/chapter-testing1")]
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(0.27284554, 0.27284554, 0.2728455, 1)
@@ -82,15 +303,22 @@ debug_color = Color(0.6229986, 0.35662666, 0.99245244, 0.41960785)
 
 [node name="chapter1" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
 script = ExtResource("4_lbhrr")
-enemy_scene1 = ExtResource("5_u5sy4")
-AI_resource1 = ExtResource("5_p57ef")
-AI_resource1_rev = ExtResource("5_iywne")
+enemy_scene = ExtResource("5_u5sy4")
+AI_resources = Array[ExtResource("16_1kice")]([SubResource("Resource_qnb83"), SubResource("Resource_ssvqc"), SubResource("Resource_264po"), SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41")])
 timer = NodePath("../Timer")
 
 [node name="chapter2" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
 script = ExtResource("8_gee14")
-enemy_scene1 = ExtResource("9_0tnpc")
+enemy_scene1 = ExtResource("5_u5sy4")
+enemy_scene2 = ExtResource("9_0tnpc")
+AI_resource1 = SubResource("Resource_nepv3")
 AI_resource2 = ExtResource("10_vtaks")
+timer = NodePath("../Timer")
+
+[node name="chapter-testing1" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
+script = ExtResource("11_kvpfn")
+enemy_scene1 = ExtResource("5_u5sy4")
+AI_resource1 = SubResource("Resource_37s47")
 timer = NodePath("../Timer")
 
 [node name="Timer" type="Timer" parent="chapters"]
