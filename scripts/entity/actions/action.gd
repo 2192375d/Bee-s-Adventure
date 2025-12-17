@@ -7,24 +7,11 @@ var timer: Timer
 var actor: Entity
 
 func start_action() -> void:
-	timer.autostart = false
-	timer.one_shot = true
+	timer = get_timer()
+	actor.add_child(timer)
 	timer.start(duration)
 
 @abstract func update(_delta: float) -> void
-
-func follow_path(position_curve: Curve, path_follow: PathFollow2D) -> void:
-	if (!path_follow):
-		return
-	var ratio = (timer.wait_time - timer.time_left) / duration # 0 to 1
-	path_follow.progress_ratio = position_curve.sample(ratio)
-	actor.global_position = path_follow.global_position
-
-func align_path_start(path: Path2D) -> void:
-	var curve = path.curve
-	var local_start = curve.get_point_position(0)
-	var global_start = path.to_global(local_start)
-	path.global_position += actor.global_position - global_start
 
 func get_timer() -> Timer:
 	var new_timer: Timer = Timer.new()

@@ -5,9 +5,8 @@
 
 [resource]
 script = ExtResource("2_7gftq")
-attack_interval = 0.2
-shot_interval = 0.1
-speed = 400.0
+attack_interval = 0.1
+speed = 500.0
 bullet_scene = ExtResource("1_eqweb")
 duration = 5.0
 metadata/_custom_type_script = "uid://cfq2j78gb8rx7"
