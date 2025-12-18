@@ -22,3 +22,5 @@ res://scripts/bee/animation-component.gd
 res://scripts/entity/entity-animation-component.gd
 res://scripts/entity/enemy.gd
 res://scripts/bee/movement-component.gd
+res://scripts/panel.gd
+res://scripts/pause-menu.gd
