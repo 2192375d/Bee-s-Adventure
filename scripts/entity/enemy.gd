@@ -87,3 +87,8 @@ func die() -> void:
 	tw.finished.connect(func(): corpse.queue_free())
 	
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player-hitbox") && !Global.get_bee().invincible:
+		Global.get_game().player_hit.emit()

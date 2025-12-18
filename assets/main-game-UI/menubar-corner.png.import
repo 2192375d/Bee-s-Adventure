@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diua3hjovavjm"
-path="res://.godot/imported/game-border.png-fc3f181a9ccfd176cc9bfc47d966ed18.ctex"
+uid="uid://bi3fug5eiuo6s"
+path="res://.godot/imported/menubar-corner.png-09295dd873bc877e18f19e0f3939c4df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game-border.png"
-dest_files=["res://.godot/imported/game-border.png-fc3f181a9ccfd176cc9bfc47d966ed18.ctex"]
+source_file="res://assets/main-game-UI/menubar-corner.png"
+dest_files=["res://.godot/imported/menubar-corner.png-09295dd873bc877e18f19e0f3939c4df.ctex"]
 
 [params]
 

@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwlmhtxnr7vdf"]
+[gd_scene load_steps=13 format=3 uid="uid://dwlmhtxnr7vdf"]
 
 [ext_resource type="PackedScene" uid="uid://deauys010c2ws" path="res://scenes/game.tscn" id="1_s3esy"]
-[ext_resource type="Texture2D" uid="uid://crqd8tbabvigm" path="res://assets/menubar-vertical.png" id="2_72e8q"]
-[ext_resource type="Texture2D" uid="uid://fonk12swq0a2" path="res://assets/menubar-horizontal.png" id="3_d2op2"]
-[ext_resource type="Texture2D" uid="uid://bi3fug5eiuo6s" path="res://assets/menubar-corner.png" id="4_0rdsr"]
+[ext_resource type="Texture2D" uid="uid://crqd8tbabvigm" path="res://assets/main-game-UI/menubar-vertical.png" id="2_72e8q"]
+[ext_resource type="Texture2D" uid="uid://bhhg0kywvq2h5" path="res://assets/main-game-UI/HP-bar.png" id="2_bxljq"]
+[ext_resource type="Script" uid="uid://ddyrqgajl1cjk" path="res://scripts/game_stats_display.gd" id="2_ebdxb"]
+[ext_resource type="Texture2D" uid="uid://fonk12swq0a2" path="res://assets/main-game-UI/menubar-horizontal.png" id="3_d2op2"]
+[ext_resource type="Texture2D" uid="uid://chik4pc73g0sk" path="res://assets/main-game-UI/HP.png" id="3_w232t"]
+[ext_resource type="Texture2D" uid="uid://bi3fug5eiuo6s" path="res://assets/main-game-UI/menubar-corner.png" id="4_0rdsr"]
+[ext_resource type="Texture2D" uid="uid://cl68owatxkot7" path="res://assets/main-game-UI/HP-full.png" id="4_cvnk6"]
+[ext_resource type="Texture2D" uid="uid://b4rta6laareos" path="res://assets/main-game-UI/spell.png" id="4_xrv8w"]
+[ext_resource type="Texture2D" uid="uid://b2lrqr0rb2j0y" path="res://assets/main-game-UI/spell-full.png" id="6_2ggl6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w232t"]
+texture = ExtResource("2_bxljq")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s3esy"]
 
@@ -13,13 +22,21 @@
 z_as_relative = false
 position = Vector2(64, 16)
 
-[node name="game-stats" type="Panel" parent="."]
+[node name="game-stats-display" type="Panel" parent="." node_paths=PackedStringArray("HP_textures", "spell_textures", "score_display")]
 offset_left = 728.0
 offset_top = 96.0
 offset_right = 1144.0
 offset_bottom = 288.0
+script = ExtResource("2_ebdxb")
+HP_icon = ExtResource("3_w232t")
+HP_full_icon = ExtResource("4_cvnk6")
+spell_icon = ExtResource("4_xrv8w")
+spell_full_icon = ExtResource("6_2ggl6")
+HP_textures = [NodePath("HP-bar/HBoxContainer/TextureRect1"), NodePath("HP-bar/HBoxContainer/TextureRect2"), NodePath("HP-bar/HBoxContainer/TextureRect3"), NodePath("HP-bar/HBoxContainer/TextureRect4"), NodePath("HP-bar/HBoxContainer/TextureRect5"), NodePath("HP-bar/HBoxContainer/TextureRect6")]
+spell_textures = [NodePath("spell-bar/HBoxContainer/TextureRect1"), NodePath("spell-bar/HBoxContainer/TextureRect2"), NodePath("spell-bar/HBoxContainer/TextureRect3"), NodePath("spell-bar/HBoxContainer/TextureRect4"), NodePath("spell-bar/HBoxContainer/TextureRect5"), NodePath("spell-bar/HBoxContainer/TextureRect6")]
+score_display = NodePath("score")
 
-[node name="player-text" type="RichTextLabel" parent="game-stats"]
+[node name="player-text" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.031000001
@@ -34,7 +51,7 @@ bbcode_enabled = true
 text = "[font_size={32
 }]PLAYER: [/font_size]"
 
-[node name="spell-text" type="RichTextLabel" parent="game-stats"]
+[node name="spell-text" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.031000001
@@ -49,7 +66,7 @@ bbcode_enabled = true
 text = "[font_size={32
 }]SPELL: [/font_size]"
 
-[node name="score-text" type="RichTextLabel" parent="game-stats"]
+[node name="score-text" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.031000001
@@ -64,7 +81,7 @@ bbcode_enabled = true
 text = "[font_size={32
 }]SCORE: [/font_size]"
 
-[node name="score" type="RichTextLabel" parent="game-stats"]
+[node name="score" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.031000001
@@ -75,12 +92,94 @@ offset_left = 147.104
 offset_top = 101.056
 offset_right = 267.168
 offset_bottom = 144.12799
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[font_size={32
-}]00000000[/font_size]"
+text = "00000000"
 horizontal_alignment = 1
 
-[node name="template background" type="TextureRect" parent="."]
+[node name="HP-bar" type="PanelContainer" parent="game-stats-display"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 21.0
+offset_right = 405.0
+offset_bottom = 61.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_w232t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="game-stats-display/HP-bar"]
+layout_mode = 2
+
+[node name="TextureRect1" type="TextureRect" parent="game-stats-display/HP-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_w232t")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="game-stats-display/HP-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_w232t")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="game-stats-display/HP-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_w232t")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="game-stats-display/HP-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_w232t")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="game-stats-display/HP-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_w232t")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="game-stats-display/HP-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_w232t")
+expand_mode = 2
+
+[node name="spell-bar" type="PanelContainer" parent="game-stats-display"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 67.0
+offset_right = 405.0
+offset_bottom = 107.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_w232t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="game-stats-display/spell-bar"]
+layout_mode = 2
+
+[node name="TextureRect1" type="TextureRect" parent="game-stats-display/spell-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_xrv8w")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="game-stats-display/spell-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_xrv8w")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="game-stats-display/spell-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_xrv8w")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="game-stats-display/spell-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_xrv8w")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="game-stats-display/spell-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_xrv8w")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="game-stats-display/spell-bar/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_xrv8w")
+expand_mode = 2
+
+[node name="template-background" type="TextureRect" parent="."]
 modulate = Color(1, 0.18039216, 1, 1)
 z_index = -1
 z_as_relative = false

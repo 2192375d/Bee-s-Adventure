@@ -1,15 +1,22 @@
 extends Node
 
 class_name AnimationComponent
-@export var anim: AnimatedSprite2D
+@export var animation: AnimatedSprite2D
 
 enum Facing {DEFAULT, LEFT, RIGHT} 
 
 @onready var facing: Facing = Facing.DEFAULT
+var bee: Player
+
+func _ready() -> void:
+	bee = Global.get_bee()
 
 func handle_animation (move_intent: Vector2i) -> void:
+	if bee.invincible:
+		animation.visible = !animation.visible
+	
 	set_animation_enum(move_intent)
-	anim.play(get_animation_string())
+	animation.play(get_animation_string())
 
 func get_animation_string () -> String:
 	var animation_name: String

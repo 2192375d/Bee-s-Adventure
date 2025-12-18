@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fonk12swq0a2"
-path="res://.godot/imported/menubar-horizontal.png-33d351933b5103e327a9ffa0b202e760.ctex"
+uid="uid://b2lrqr0rb2j0y"
+path="res://.godot/imported/spell-full.png-684dec054d8cb331d3d976c4d91c831e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/menubar-horizontal.png"
-dest_files=["res://.godot/imported/menubar-horizontal.png-33d351933b5103e327a9ffa0b202e760.ctex"]
+source_file="res://assets/main-game-UI/spell-full.png"
+dest_files=["res://.godot/imported/spell-full.png-684dec054d8cb331d3d976c4d91c831e.ctex"]
 
 [params]
 

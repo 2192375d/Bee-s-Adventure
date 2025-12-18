@@ -1,6 +1,10 @@
+Timer
+Node
+TextureRect
+HBoxContainer
+PanelContainer
 PathFollow2D
 Path2D
-Node
 CollisionShape2D
 Area2D
 AnimatedSprite2D
