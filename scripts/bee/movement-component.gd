@@ -2,9 +2,12 @@ extends Node
 
 class_name MovementComponent
 
-@export var actor: CharacterBody2D = Global.get_bee()
+var actor: Player
 @export var speed: float
 @export var focus_speed: float
+
+func _ready() -> void:
+	actor = Global.get_bee()
 
 func handle_movement (move_intent: Vector2i) -> void:
 	if (move_intent == Vector2i.ZERO):

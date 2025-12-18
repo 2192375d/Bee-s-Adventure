@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crqd8tbabvigm"
-path="res://.godot/imported/menubar-vertical.png-f01ef3e2a36b5208e6d1cd55262f3416.ctex"
+uid="uid://chik4pc73g0sk"
+path="res://.godot/imported/HP.png-6af80b4ce3b611e0695994c44d6c90cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/menubar-vertical.png"
-dest_files=["res://.godot/imported/menubar-vertical.png-f01ef3e2a36b5208e6d1cd55262f3416.ctex"]
+source_file="res://assets/main-game-UI/HP.png"
+dest_files=["res://.godot/imported/HP.png-6af80b4ce3b611e0695994c44d6c90cb.ctex"]
 
 [params]
 

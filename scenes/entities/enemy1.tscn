@@ -38,3 +38,5 @@ options_dictionary = Dictionary[int, Variant]({
 metadata/_custom_type_script = "uid://b16k7gsqc3uhj"
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

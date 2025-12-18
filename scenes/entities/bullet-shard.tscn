@@ -4,12 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://b521wd8x7tec0" path="res://assets/shard.png" id="1_mtjc8"]
 
 [node name="bullet-shard" type="Area2D"]
-position = Vector2(-0.5, 0)
 rotation = 1.5707964
 script = ExtResource("1_mcht0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
 texture = ExtResource("1_mtjc8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 0.5)
 polygon = PackedVector2Array(1, 6, 3, 3, 3, -4, 1, -7, -1, -7, -3, -4, -3, 3, -1, 6)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

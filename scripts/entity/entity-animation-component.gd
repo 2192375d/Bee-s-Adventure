@@ -13,8 +13,6 @@ enum OPTIONS { ROTATE, PLAY_ANIMATION }
 
 @export var options_dictionary: Dictionary[OPTIONS, Variant]
 
-var _tween: Tween
-
 func _ready() -> void:
 	animation.self_modulate = Color(0.6, 0.6, 0.6, 1)
 
@@ -24,9 +22,9 @@ func rotate_animation(delta: float, speed: float) -> void:
 func play_animation(animation_name: String) -> void:
 	animation.play(animation_name)
 
+var _tween: Tween
+
 func shine_animation() -> void:
-	if animation == null:
-		return
 	
 	if _tween and _tween.is_running():
 		_tween.kill()
