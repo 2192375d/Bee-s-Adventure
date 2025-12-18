@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwlmhtxnr7vdf"]
+[gd_scene load_steps=14 format=3 uid="uid://dwlmhtxnr7vdf"]
 
 [ext_resource type="PackedScene" uid="uid://deauys010c2ws" path="res://scenes/game.tscn" id="1_s3esy"]
 [ext_resource type="Texture2D" uid="uid://crqd8tbabvigm" path="res://assets/main-game-UI/menubar-vertical.png" id="2_72e8q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cl68owatxkot7" path="res://assets/main-game-UI/HP-full.png" id="4_cvnk6"]
 [ext_resource type="Texture2D" uid="uid://b4rta6laareos" path="res://assets/main-game-UI/spell.png" id="4_xrv8w"]
 [ext_resource type="Texture2D" uid="uid://b2lrqr0rb2j0y" path="res://assets/main-game-UI/spell-full.png" id="6_2ggl6"]
+[ext_resource type="Script" uid="uid://bmal54e1q3mm3" path="res://scripts/pause-menu.gd" id="11_2ggl6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w232t"]
 texture = ExtResource("2_bxljq")
@@ -250,3 +251,42 @@ position = Vector2(661.4761, 757.0063)
 rotation = 4.712389
 scale = Vector2(4.6627035, 4.9800167)
 texture = ExtResource("4_0rdsr")
+
+[node name="pause-menu" type="Panel" parent="." node_paths=PackedStringArray("game", "resume_button")]
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 512.0
+offset_bottom = 512.0
+mouse_filter = 2
+script = ExtResource("11_2ggl6")
+game = NodePath("../game")
+resume_button = NodePath("VBoxContainer/resume")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause-menu"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+mouse_filter = 2
+alignment = 1
+
+[node name="resume" type="Button" parent="pause-menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+mouse_filter = 2
+text = "resume"
+
+[node name="restart" type="Button" parent="pause-menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+mouse_filter = 2
+text = "restart from beginning"
+
+[node name="exit" type="Button" parent="pause-menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+mouse_filter = 2
+text = "bye!"
+
+[connection signal="pressed" from="pause-menu/VBoxContainer/resume" to="pause-menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="pause-menu/VBoxContainer/restart" to="pause-menu" method="_on_restart_pressed"]
+[connection signal="pressed" from="pause-menu/VBoxContainer/exit" to="pause-menu" method="_on_exit_pressed"]
