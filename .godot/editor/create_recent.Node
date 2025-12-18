@@ -1,3 +1,4 @@
+Timer
 RichTextLabel
 HBoxContainer
 VBoxContainer
@@ -5,7 +6,6 @@ CollisionShape2D
 Area2D
 Button
 Panel
-Timer
 Node
 TextureRect
 PanelContainer

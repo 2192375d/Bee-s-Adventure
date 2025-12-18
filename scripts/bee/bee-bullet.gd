@@ -3,8 +3,6 @@ extends Area2D
 class_name BeeBullet
 
 @export var speed: float
-@export var damage: int
-
 var radius: float = 0
 
 func _ready():
@@ -28,5 +26,5 @@ func _physics_process(delta: float) -> void:
 
 func on_area_entered(area: Area2D) -> void:
 	if area is Enemy:
-		area.get_hit(damage)
+		area.get_hit(Global.PLAYER_BULLET_DAMAGE)
 		queue_free()
