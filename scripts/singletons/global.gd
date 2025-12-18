@@ -15,6 +15,11 @@ const GRAZE_SCORE = 50
 
 const PLAYER_HIT_SCORE = -50000
 
+const PLAYER_BULLET_DAMAGE = 1
+const PLAYER_HIT_DAMAGE = 7
+
+const SPELL_DAMAGE = 5
+
 var gameSizeX: float = 640.0
 var gameSizeY: float = 736.0
 

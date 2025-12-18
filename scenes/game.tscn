@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://deauys010c2ws"]
+[gd_scene load_steps=57 format=3 uid="uid://deauys010c2ws"]
 
 [ext_resource type="Script" uid="uid://bklspmgxgykx6" path="res://scripts/game/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://b52fcjo0qajoc" path="res://scenes/bee.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://bkjdwddut52wn" path="res://assets/bee/bee-default.png" id="2_37s47"]
 [ext_resource type="Script" uid="uid://bqdalj4yducf1" path="res://scripts/game/in-game-check.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://dbdo34hadrpnn" path="res://scripts/game/chapters/chapter1.gd" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dyu6rwuq3dtid" path="res://scenes/entities/enemy1.tscn" id="5_u5sy4"]
@@ -246,15 +247,22 @@ script = ExtResource("16_1kice")
 actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_5newe")])
 metadata/_custom_type_script = "uid://cqlrfm7is5dko"
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("bee", "chapters", "other_chapters", "stats_component", "clear_screen_timer")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("bee", "background", "chapters", "other_chapters", "stats_component", "clear_screen_timer", "spell_card_timer", "spell_card_sub_timer")]
 light_mask = 5
 script = ExtResource("1_lnu2h")
 bee = NodePath("bee")
+background = NodePath("background")
+standard_background = SubResource("CanvasTexture_8cj0n")
+spell_background = ExtResource("2_37s47")
 chapters = [NodePath("chapters/chapter1"), NodePath("chapters/chapter2")]
 other_chapters = [NodePath("chapters/chapter-testing1")]
 stats_component = NodePath("stats-component")
 clear_screen_timer = NodePath("clear-screen-timer")
 clear_screen_time = 0.5
+spell_card_timer = NodePath("spell-card-timer")
+spell_card_time = 3.5
+spell_card_sub_timer = NodePath("spell-card-sub-timer")
+spell_card_sub_time = 1.0
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(0.27284554, 0.27284554, 0.2728455, 1)
@@ -334,3 +342,11 @@ script = ExtResource("21_5newe")
 
 [node name="clear-screen-timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="spell-card-timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="spell-card-sub-timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="spell-card-timer" to="." method="_on_spellcardtimer_timeout"]
+[connection signal="timeout" from="spell-card-sub-timer" to="." method="_on_spellcardsubtimer_timeout"]
