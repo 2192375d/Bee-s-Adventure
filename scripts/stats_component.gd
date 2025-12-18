@@ -5,6 +5,7 @@ class_name StatsComponent
 var HP_num: int
 var spell_num: int
 var score: int
+var graze: int
 
 signal in_game_stats_changed
 
@@ -46,10 +47,17 @@ func set_spell(new_spell_num: int) -> void:
 func add_score(amount: int) -> void:
 	if score + amount < 0:
 		score = 0
-		return
-	
-	if score + amount > Global.MAXIMUM_SCORE:
+	elif score + amount > Global.MAXIMUM_SCORE:
 		score = Global.MAXIMUM_SCORE
-		return
+	else: 
+		score += amount
 	
-	score += amount
+	in_game_stats_changed.emit()
+
+func increment_graze() -> void:
+	if graze + 1 > Global.MAXIMUM_GRAZE:
+		graze = Global.MAXIMUM_GRAZE
+	else:
+		graze += 1
+	
+	in_game_stats_changed.emit()

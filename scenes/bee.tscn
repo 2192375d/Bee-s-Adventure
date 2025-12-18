@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b52fcjo0qajoc"]
+[gd_scene load_steps=18 format=3 uid="uid://b52fcjo0qajoc"]
 
 [ext_resource type="Script" uid="uid://2dajnsjsat2u" path="res://scripts/bee/bee.gd" id="1_1q2x0"]
 [ext_resource type="Texture2D" uid="uid://bkjdwddut52wn" path="res://assets/bee/bee-default.png" id="2_ogg2i"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cyvdd0xeublfd" path="res://assets/bee/hitbox-dot.png" id="8_ykkpv"]
 [ext_resource type="Script" uid="uid://dj50mkbj06f6q" path="res://scripts/bee/shoot-component.gd" id="11_011rt"]
 [ext_resource type="PackedScene" uid="uid://buts3pip8f7ji" path="res://scenes/bee-bullet.tscn" id="12_ovfpg"]
+[ext_resource type="Script" uid="uid://dcur3vs5fteic" path="res://scripts/bee/grazing_box.gd" id="13_28ix7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qf6nb"]
 animations = [{
@@ -71,6 +72,9 @@ height = 60.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_xfac4"]
 radius = 1.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vq5cx"]
+radius = 18.626291
+
 [node name="bee" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "animation_component", "shoot_component", "disappear_timer", "invincibility_timer", "hitbox_dot")]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_1q2x0")
@@ -90,6 +94,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qf6nb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_oynbf")
 
@@ -132,6 +137,14 @@ one_shot = true
 [node name="disappear-timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="grazing-box" type="Area2D" parent="."]
+script = ExtResource("13_28ix7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grazing-box"]
+shape = SubResource("CircleShape2D_vq5cx")
+debug_color = Color(0.6676235, 0.318379, 0.991026, 0.41960785)
+
 [connection signal="timeout" from="ShootComponent/Timer" to="ShootComponent" method="_on_timer_timeout"]
 [connection signal="timeout" from="invincibility-timer" to="." method="_on_invincibilitytimer_timeout"]
 [connection signal="timeout" from="disappear-timer" to="." method="_on_disappeartimer_timeout"]
+[connection signal="area_entered" from="grazing-box" to="grazing-box" method="_on_area_entered"]

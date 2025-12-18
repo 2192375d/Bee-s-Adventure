@@ -230,6 +230,7 @@ metadata/_custom_type_script = "uid://cpa4eomrjq4ni"
 [sub_resource type="Resource" id="Resource_nepv3"]
 script = ExtResource("16_1kice")
 actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_02fa5")])
+killed_score = 2
 metadata/_custom_type_script = "uid://cqlrfm7is5dko"
 
 [sub_resource type="Resource" id="Resource_5newe"]

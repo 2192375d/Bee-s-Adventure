@@ -24,3 +24,6 @@ res://scripts/entity/enemy.gd
 res://scripts/bee/movement-component.gd
 res://scripts/panel.gd
 res://scripts/pause-menu.gd
+res://scripts/entity/ai-resource.gd
+res://scripts/game/chapters/chapter1.gd
+res://scripts/bee/grazing_box.gd
