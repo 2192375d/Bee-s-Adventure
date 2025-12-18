@@ -5,6 +5,8 @@ class_name Bullet
 var direction_vector: Vector2
 var speed: float
 
+var grazed: bool = false
+
 func set_bullet(spawnpoint: Vector2, new_direction_vector: Vector2, new_speed: float) -> void:
 	position = spawnpoint
 	direction_vector = new_direction_vector

@@ -24,6 +24,7 @@ func _ready() -> void:
 	stats_component.HP_num = 2
 	stats_component.spell_num = Global.NUM_SPELL_ON_RESET
 	stats_component.score = 0
+	stats_component.graze = 0
 	
 	stats_component.in_game_stats_changed.emit.call_deferred()
 	
@@ -44,12 +45,10 @@ func debug_chapter(chapter_num_to_debug: int) -> void:
 
 
 func _on_player_hit() -> void:
-	#if bee.invincible:
-		#return
 	print("player hit!")
+	stats_component.add_score(Global.PLAYER_HIT_SCORE)
 	
 	if (stats_component.HP_num == 0):
-		# player is dead, do stuffs
 		return
 	
 	stats_component.decrement_HP()

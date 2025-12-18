@@ -56,7 +56,17 @@ func in_border() -> bool:
 func get_hit(damage: int) -> void:
 	animation_component.shine_animation()
 	hp -= damage
+	
+	Global.get_game().stats_component.add_score(Global.ENEMY_HIT_SCORE)
+	
 	if hp <= 0.0:
+		var value: int = 0
+		match ai_resource.killed_score:
+			AIResource.ENEMY_KILLED_SCORE.SCORE1: value = Global.ENEMY_KILLED_SCORE1
+			AIResource.ENEMY_KILLED_SCORE.SCORE2: value = Global.ENEMY_KILLED_SCORE2
+			AIResource.ENEMY_KILLED_SCORE.SCORE3: value = Global.ENEMY_KILLED_SCORE3
+		Global.get_game().stats_component.add_score(value)
+		
 		die()
 
 func die() -> void:

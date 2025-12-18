@@ -1,8 +1,11 @@
 extends Resource
 
 class_name AIResource
+
+enum ENEMY_KILLED_SCORE {SCORE1, SCORE2, SCORE3}
+
 @export var actions: Array[ActionResource]
-#var actor: Enemy
+@export var killed_score: ENEMY_KILLED_SCORE = ENEMY_KILLED_SCORE.SCORE2
 
 var currentAction: ActionResource
 signal actions_complete

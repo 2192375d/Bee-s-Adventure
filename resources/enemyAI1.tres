@@ -18,4 +18,5 @@ metadata/_custom_type_script = "uid://n8bhrlq0undu"
 [resource]
 script = ExtResource("3_t8cwn")
 actions = Array[ExtResource("1_q17iy")]([SubResource("Resource_8v0s7"), ExtResource("2_ogah6")])
+killed_score = 0
 metadata/_custom_type_script = "uid://cqlrfm7is5dko"
