@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://deauys010c2ws"]
+[gd_scene load_steps=58 format=3 uid="uid://deauys010c2ws"]
 
 [ext_resource type="Script" uid="uid://bklspmgxgykx6" path="res://scripts/game/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://b52fcjo0qajoc" path="res://scenes/bee.tscn" id="1_uwrxv"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ck5no7yisp46c" path="res://scenes/entities/bullet-shard.tscn" id="16_5newe"]
 [ext_resource type="Script" uid="uid://d1is2cqaqw85y" path="res://scripts/entity/actions/basics/action-attack-aimed.gd" id="17_37s47"]
 [ext_resource type="Script" uid="uid://cp74h5l57xucx" path="res://scripts/stats_component.gd" id="21_5newe"]
+[ext_resource type="Script" uid="uid://bnpokdu4ey4vt" path="res://scripts/game/chapters/chapter3.gd" id="21_bt5mj"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8cj0n"]
 
@@ -327,6 +328,9 @@ enemy_scene2 = ExtResource("9_0tnpc")
 AI_resource1 = SubResource("Resource_nepv3")
 AI_resource2 = ExtResource("10_vtaks")
 timer = NodePath("../Timer")
+
+[node name="chapter3" type="Node" parent="chapters"]
+script = ExtResource("21_bt5mj")
 
 [node name="chapter-testing1" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
 script = ExtResource("11_kvpfn")

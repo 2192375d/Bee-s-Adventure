@@ -1,3 +1,4 @@
+Node
 Timer
 RichTextLabel
 HBoxContainer
@@ -6,7 +7,6 @@ CollisionShape2D
 Area2D
 Button
 Panel
-Node
 TextureRect
 PanelContainer
 PathFollow2D
