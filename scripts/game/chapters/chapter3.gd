@@ -11,11 +11,11 @@ func handle_chapter() -> void:
 	const HP1: int = 5
 	const HP2: int = 40
 	
-	spawn_enemy(enemy_scene2, Vector2(64, 128), HP2, AI_resource2)
+	spawn_enemy(enemy_scene2, Vector2(Global.gameSizeX - 64, 128), HP2, AI_resource2)
 	await wait(2.0)
 	for i in range(0, 5):
 		spawn_enemy(enemy_scene1, 
-		Vector2(Global.gameSizeX - 128, 32),
+		Vector2(128, 32),
 		HP1,
 		AI_resource1
 		)

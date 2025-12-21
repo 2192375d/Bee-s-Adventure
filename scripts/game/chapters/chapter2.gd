@@ -13,7 +13,7 @@ func handle_chapter() -> void:
 	#const GAP_Y: int = 16
 	
 	const HP1: int = 5
-	const HP2: int = 40
+	const HP2: int = 70
 	
 	#for i in range(0, 4):
 	spawn_enemy(enemy_scene2, Vector2(64, 128), HP2, AI_resource2)
