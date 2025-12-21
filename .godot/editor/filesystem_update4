@@ -1,8 +1,2 @@
 res://scenes/game.tscn
 res://resources/enemyAI1.tres
-res://scripts/game/game.gd
-res://scripts/singletons/global.gd
-res://scenes/bee-bullet.tscn
-res://scripts/bee/bee-bullet.gd
-res://scripts/bee/animation-component.gd
-res://scenes/bee.tscn

@@ -23,7 +23,9 @@ class_name Game
 @export var spell_card_time: float
 
 @export var spell_card_sub_timer: Timer
-@export var spell_card_sub_time: float
+@export var spell_card_sub_time: float 
+
+#expected to be k * spell_card_sub_time = spell_card_time, k\in\mathbb{N}
 
 signal player_hit
 

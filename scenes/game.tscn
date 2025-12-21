@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://deauys010c2ws"]
+[gd_scene load_steps=74 format=3 uid="uid://deauys010c2ws"]
 
 [ext_resource type="Script" uid="uid://bklspmgxgykx6" path="res://scripts/game/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://b52fcjo0qajoc" path="res://scenes/bee.tscn" id="1_uwrxv"]
@@ -14,14 +14,15 @@
 [ext_resource type="Script" uid="uid://cuxk5es1e8xvw" path="res://scripts/entity/actions/action.gd" id="12_ca42v"]
 [ext_resource type="PackedScene" uid="uid://c1hpuii2quq2a" path="res://scenes/entities/paths/path-move1.tscn" id="13_rysoc"]
 [ext_resource type="PackedScene" uid="uid://wmhjt247gh12" path="res://scenes/entities/paths/path-move2.tscn" id="14_1kice"]
-[ext_resource type="Curve" uid="uid://dk28uq32yla8u" path="res://resources/speed-curves/straight-move.tres" id="14_rysoc"]
 [ext_resource type="Curve" uid="uid://dc1ua63wulbwr" path="res://resources/speed-curves/smooth-move.tres" id="14_ssvqc"]
 [ext_resource type="Script" uid="uid://n8bhrlq0undu" path="res://scripts/entity/actions/basics/action-follow.gd" id="15_264po"]
 [ext_resource type="Script" uid="uid://cpa4eomrjq4ni" path="res://scripts/entity/actions/basics/action-run-multiple.gd" id="15_ssvqc"]
 [ext_resource type="Script" uid="uid://cqlrfm7is5dko" path="res://scripts/entity/ai-resource.gd" id="16_1kice"]
 [ext_resource type="PackedScene" uid="uid://ck5no7yisp46c" path="res://scenes/entities/bullet-shard.tscn" id="16_5newe"]
 [ext_resource type="Script" uid="uid://d1is2cqaqw85y" path="res://scripts/entity/actions/basics/action-attack-aimed.gd" id="17_37s47"]
+[ext_resource type="Resource" uid="uid://b7bq0iycrrjk8" path="res://resources/actions/action-attack-surround1.tres" id="19_bt5mj"]
 [ext_resource type="Script" uid="uid://cp74h5l57xucx" path="res://scripts/stats_component.gd" id="21_5newe"]
+[ext_resource type="Script" uid="uid://bnpokdu4ey4vt" path="res://scripts/game/chapters/chapter3.gd" id="21_bt5mj"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8cj0n"]
 
@@ -206,10 +207,33 @@ script = ExtResource("16_1kice")
 actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_v2yb1"), ExtResource("10_ir15t"), SubResource("Resource_js0lu")])
 metadata/_custom_type_script = "uid://cqlrfm7is5dko"
 
+[sub_resource type="Curve2D" id="Curve2D_6bb4k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 16)
+}
+point_count = 2
+
+[sub_resource type="PackedScene" id="PackedScene_37s47"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PathMove2", "Path2D", "curve", "PathFollow2D", "PathFollow2D", "rotation"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0),
+"variants": [SubResource("Curve2D_6bb4k"), 0.7853982],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_bt5mj"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_gxtfn"]
 script = ExtResource("15_264po")
-position_curve = ExtResource("14_rysoc")
-path_scene = ExtResource("14_1kice")
+position_curve = SubResource("Curve_bt5mj")
+path_scene = SubResource("PackedScene_37s47")
 displacement = Vector2(-700, 128)
 duration = 2.0
 metadata/_custom_type_script = "uid://n8bhrlq0undu"
@@ -222,16 +246,115 @@ bullet_scene = ExtResource("16_5newe")
 duration = 2.0
 metadata/_custom_type_script = "uid://d1is2cqaqw85y"
 
-[sub_resource type="Resource" id="Resource_02fa5"]
+[sub_resource type="Resource" id="Resource_m4url"]
 script = ExtResource("15_ssvqc")
 actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_gxtfn"), SubResource("Resource_twgab")])
+duration = 2.0
+metadata/_custom_type_script = "uid://cpa4eomrjq4ni"
+
+[sub_resource type="Resource" id="Resource_7025r"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_m4url")])
+killed_score = 0
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="PackedScene" id="PackedScene_e1j6l"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PathMove2", "Path2D", "curve", "PathFollow2D", "PathFollow2D", "rotation"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0),
+"variants": [SubResource("Curve2D_6bb4k"), 0.7853982],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_pl11u"]
+_data = [Vector2(0, 0), 0.0, 2.7512748, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_pr1ej"]
+script = ExtResource("15_264po")
+position_curve = SubResource("Curve_pl11u")
+path_scene = SubResource("PackedScene_e1j6l")
+displacement = Vector2(64, 64)
+duration = 1.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Curve2D" id="Curve2D_t7ncs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 16)
+}
+point_count = 2
+
+[sub_resource type="PackedScene" id="PackedScene_k8uol"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PathMove2", "Path2D", "curve", "PathFollow2D", "PathFollow2D", "rotation"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0),
+"variants": [SubResource("Curve2D_t7ncs"), 0.7853982],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_gc1ff"]
+_data = [Vector2(0, 0), 0.0, 2.7512748, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_05nbr"]
+script = ExtResource("15_264po")
+position_curve = SubResource("Curve_gc1ff")
+path_scene = SubResource("PackedScene_k8uol")
+displacement = Vector2(640, 64)
+duration = 6.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_0sl42"]
+script = ExtResource("16_1kice")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_pr1ej"), ExtResource("19_bt5mj"), SubResource("Resource_05nbr")])
+killed_score = 2
+metadata/_custom_type_script = "uid://cqlrfm7is5dko"
+
+[sub_resource type="PackedScene" id="PackedScene_bt5mj"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PathMove2", "Path2D", "curve", "PathFollow2D", "PathFollow2D", "rotation"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0),
+"variants": [SubResource("Curve2D_6bb4k"), 0.7853982],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_e1j6l"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_8ool0"]
+script = ExtResource("15_264po")
+position_curve = SubResource("Curve_e1j6l")
+path_scene = SubResource("PackedScene_bt5mj")
+displacement = Vector2(700, 128)
+duration = 2.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Resource" id="Resource_02fa5"]
+script = ExtResource("15_ssvqc")
+actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_8ool0"), SubResource("Resource_twgab")])
 duration = 2.0
 metadata/_custom_type_script = "uid://cpa4eomrjq4ni"
 
 [sub_resource type="Resource" id="Resource_nepv3"]
 script = ExtResource("16_1kice")
 actions = Array[ExtResource("12_ca42v")]([SubResource("Resource_02fa5")])
-killed_score = 2
+killed_score = 0
 metadata/_custom_type_script = "uid://cqlrfm7is5dko"
 
 [sub_resource type="Resource" id="Resource_5newe"]
@@ -254,7 +377,7 @@ bee = NodePath("bee")
 background = NodePath("background")
 standard_background = SubResource("CanvasTexture_8cj0n")
 spell_background = ExtResource("2_37s47")
-chapters = [NodePath("chapters/chapter1"), NodePath("chapters/chapter2")]
+chapters = [NodePath("chapters/chapter0"), NodePath("chapters/chapter1"), NodePath("chapters/chapter2")]
 other_chapters = [NodePath("chapters/chapter-testing1")]
 stats_component = NodePath("stats-component")
 clear_screen_timer = NodePath("clear-screen-timer")
@@ -314,14 +437,22 @@ debug_color = Color(0.6229986, 0.35662666, 0.99245244, 0.41960785)
 
 [node name="chapters" type="Node" parent="."]
 
-[node name="chapter1" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
+[node name="chapter0" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
 script = ExtResource("4_lbhrr")
 enemy_scene = ExtResource("5_u5sy4")
 AI_resources = Array[ExtResource("16_1kice")]([SubResource("Resource_qnb83"), SubResource("Resource_ssvqc"), SubResource("Resource_264po"), SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41")])
 timer = NodePath("../Timer")
 
-[node name="chapter2" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
+[node name="chapter1" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
 script = ExtResource("8_gee14")
+enemy_scene1 = ExtResource("5_u5sy4")
+enemy_scene2 = ExtResource("9_0tnpc")
+AI_resource1 = SubResource("Resource_7025r")
+AI_resource2 = SubResource("Resource_0sl42")
+timer = NodePath("../Timer")
+
+[node name="chapter2" type="Node" parent="chapters" node_paths=PackedStringArray("timer")]
+script = ExtResource("21_bt5mj")
 enemy_scene1 = ExtResource("5_u5sy4")
 enemy_scene2 = ExtResource("9_0tnpc")
 AI_resource1 = SubResource("Resource_nepv3")

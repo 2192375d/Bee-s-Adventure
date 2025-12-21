@@ -1,22 +1,74 @@
-[gd_resource type="Resource" script_class="AIResource" load_steps=8 format=3 uid="uid://r3v4wqh1bueq"]
+[gd_resource type="Resource" script_class="AIResource" load_steps=13 format=3 uid="uid://r3v4wqh1bueq"]
 
 [ext_resource type="Script" uid="uid://cuxk5es1e8xvw" path="res://scripts/entity/actions/action.gd" id="1_q17iy"]
-[ext_resource type="PackedScene" uid="uid://wmhjt247gh12" path="res://scenes/entities/paths/path-move2.tscn" id="2_4tyrh"]
 [ext_resource type="Resource" uid="uid://b7bq0iycrrjk8" path="res://resources/actions/action-attack-surround1.tres" id="2_ogah6"]
-[ext_resource type="Curve" uid="uid://dc1ua63wulbwr" path="res://resources/speed-curves/smooth-move.tres" id="3_0af1f"]
 [ext_resource type="Script" uid="uid://cqlrfm7is5dko" path="res://scripts/entity/ai-resource.gd" id="3_t8cwn"]
 [ext_resource type="Script" uid="uid://n8bhrlq0undu" path="res://scripts/entity/actions/basics/action-follow.gd" id="4_5dfu0"]
 
-[sub_resource type="Resource" id="Resource_8v0s7"]
+[sub_resource type="Curve2D" id="Curve2D_6bb4k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 16)
+}
+point_count = 2
+
+[sub_resource type="PackedScene" id="PackedScene_2eerh"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PathMove2", "Path2D", "curve", "PathFollow2D", "PathFollow2D", "rotation"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0),
+"variants": [SubResource("Curve2D_6bb4k"), 0.7853982],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_k8uol"]
+_data = [Vector2(0, 0), 0.0, 2.7512748, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_gc1ff"]
 script = ExtResource("4_5dfu0")
-position_curve = ExtResource("3_0af1f")
-path_scene = ExtResource("2_4tyrh")
-displacement = Vector2(64, 64)
+position_curve = SubResource("Curve_k8uol")
+path_scene = SubResource("PackedScene_2eerh")
+displacement = Vector2(-64, 64)
 duration = 1.0
+metadata/_custom_type_script = "uid://n8bhrlq0undu"
+
+[sub_resource type="Curve2D" id="Curve2D_t7ncs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 16)
+}
+point_count = 2
+
+[sub_resource type="PackedScene" id="PackedScene_k8uol"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PathMove2", "Path2D", "curve", "PathFollow2D", "PathFollow2D", "rotation"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0),
+"variants": [SubResource("Curve2D_t7ncs"), 0.7853982],
+"version": 3
+}
+
+[sub_resource type="Curve" id="Curve_gc1ff"]
+_data = [Vector2(0, 0), 0.0, 2.7512748, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_t7ncs"]
+script = ExtResource("4_5dfu0")
+position_curve = SubResource("Curve_gc1ff")
+path_scene = SubResource("PackedScene_k8uol")
+displacement = Vector2(-640, 64)
+duration = 6.0
 metadata/_custom_type_script = "uid://n8bhrlq0undu"
 
 [resource]
 script = ExtResource("3_t8cwn")
-actions = Array[ExtResource("1_q17iy")]([SubResource("Resource_8v0s7"), ExtResource("2_ogah6")])
-killed_score = 0
+actions = Array[ExtResource("1_q17iy")]([SubResource("Resource_gc1ff"), ExtResource("2_ogah6"), SubResource("Resource_t7ncs")])
+killed_score = 2
 metadata/_custom_type_script = "uid://cqlrfm7is5dko"
