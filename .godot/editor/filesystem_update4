@@ -1,2 +1,3 @@
 res://scenes/game.tscn
 res://resources/enemyAI1.tres
+res://scripts/game/chapters/chapter4.gd
