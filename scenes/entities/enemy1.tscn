@@ -30,11 +30,11 @@ shape = SubResource("RectangleShape2D_ppmo8")
 
 [node name="EntityAnimationComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "animation")]
 script = ExtResource("3_n665k")
-actor = NodePath("..")
-animation = NodePath("../AnimatedSprite2D")
 options_dictionary = Dictionary[int, Variant]({
 0: 10.0
 })
+actor = NodePath("..")
+animation = NodePath("../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://b16k7gsqc3uhj"
 
 [node name="Timer" type="Timer" parent="."]

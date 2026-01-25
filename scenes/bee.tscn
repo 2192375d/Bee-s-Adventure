@@ -73,7 +73,7 @@ height = 60.0
 radius = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vq5cx"]
-radius = 18.626291
+radius = 45.803482
 
 [node name="bee" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "animation_component", "shoot_component", "disappear_timer", "invincibility_timer", "hitbox_dot")]
 scale = Vector2(1.4, 1.4)
@@ -88,8 +88,8 @@ invincible_time = 2.0
 hitbox_dot = NodePath("hitbox-sprite")
 
 [node name="bee-sprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.78431374, 1, 1, 1)
-position = Vector2(-1.7763568e-15, -12.857142)
+modulate = Color(0.784314, 1, 1, 1)
+position = Vector2(-1.77636e-15, -12.8571)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qf6nb")
 
@@ -99,7 +99,7 @@ position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_oynbf")
 
 [node name="hitbox-sprite" type="Sprite2D" parent="."]
-position = Vector2(0, 2.861023e-06)
+position = Vector2(0, 2.86102e-06)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_ykkpv")
 
@@ -108,9 +108,9 @@ modulate = Color(0, 1, 1, 1)
 position = Vector2(0, 11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -10.999999)
+position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_xfac4")
-debug_color = Color(0.98145753, 0, 0.3749718, 0.41960785)
+debug_color = Color(0.981458, 0, 0.374972, 0.419608)
 
 [node name="MovementComponent" type="Node" parent="."]
 script = ExtResource("2_vie5o")
@@ -142,7 +142,7 @@ script = ExtResource("13_28ix7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grazing-box"]
 shape = SubResource("CircleShape2D_vq5cx")
-debug_color = Color(0.6676235, 0.318379, 0.991026, 0.41960785)
+debug_color = Color(0.667624, 0.318379, 0.991026, 0.419608)
 
 [connection signal="timeout" from="ShootComponent/Timer" to="ShootComponent" method="_on_timer_timeout"]
 [connection signal="timeout" from="invincibility-timer" to="." method="_on_invincibilitytimer_timeout"]

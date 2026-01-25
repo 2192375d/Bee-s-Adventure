@@ -90,10 +90,11 @@ func _process(_delta: float) -> void:
 func _on_spellcardtimer_timeout() -> void:
 	background.texture = standard_background
 	bee.invincible = false
+	bee.animation_component.animation.visible = true
 
 func _on_spellcardsubtimer_timeout() -> void:
 	damage_on_screen_enemy(Global.SPELL_DAMAGE)
-	if !spell_card_timer.is_stopped():
+	if spell_card_timer.time_left > (spell_card_time / 4.0):
 		spell_card_sub_timer.start(spell_card_sub_time)
 
 func clear_on_screen_bullet() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwlmhtxnr7vdf"]
+[gd_scene load_steps=15 format=3 uid="uid://dwlmhtxnr7vdf"]
 
 [ext_resource type="PackedScene" uid="uid://deauys010c2ws" path="res://scenes/game.tscn" id="1_s3esy"]
 [ext_resource type="Texture2D" uid="uid://crqd8tbabvigm" path="res://assets/main-game-UI/menubar-vertical.png" id="2_72e8q"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b4rta6laareos" path="res://assets/main-game-UI/spell.png" id="4_xrv8w"]
 [ext_resource type="Texture2D" uid="uid://b2lrqr0rb2j0y" path="res://assets/main-game-UI/spell-full.png" id="6_2ggl6"]
 [ext_resource type="Script" uid="uid://bmal54e1q3mm3" path="res://scripts/pause-menu.gd" id="11_2ggl6"]
+[ext_resource type="Script" uid="uid://ckddqmic31oke" path="res://scripts/time.gd" id="12_5pt6e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w232t"]
 texture = ExtResource("2_bxljq")
@@ -41,12 +42,12 @@ graze_display = NodePath("graze")
 [node name="player-text" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.031000001
-anchor_top = 0.057000004
+anchor_left = 0.031
+anchor_top = 0.057
 anchor_right = 0.127
-anchor_bottom = 0.16600001
-offset_left = 3.1039991
-offset_top = 5.0559998
+anchor_bottom = 0.166
+offset_left = 3.104
+offset_top = 5.056
 offset_right = 123.168
 offset_bottom = 48.128
 bbcode_enabled = true
@@ -97,11 +98,11 @@ expand_mode = 2
 [node name="spell-text" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.031000001
-anchor_top = 0.057000004
+anchor_left = 0.031
+anchor_top = 0.057
 anchor_right = 0.127
-anchor_bottom = 0.16600001
-offset_left = 3.1039991
+anchor_bottom = 0.166
+offset_left = 3.104
 offset_top = 53.056
 offset_right = 123.168
 offset_bottom = 96.128
@@ -153,11 +154,11 @@ expand_mode = 2
 [node name="score-text" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.031000001
-anchor_top = 0.057000004
+anchor_left = 0.031
+anchor_top = 0.057
 anchor_right = 0.127
-anchor_bottom = 0.16600001
-offset_left = 3.1039991
+anchor_bottom = 0.166
+offset_left = 3.104
 offset_top = 101.056
 offset_right = 123.168
 offset_bottom = 142.057
@@ -168,12 +169,12 @@ text = "[font_size={32
 [node name="score" type="RichTextLabel" parent="game-stats-display"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.031000001
-anchor_top = 0.057000004
+anchor_left = 0.031
+anchor_top = 0.057
 anchor_right = 0.127
-anchor_bottom = 0.16600001
+anchor_bottom = 0.166
 offset_left = 147.104
-offset_top = 101.05601
+offset_top = 101.056
 offset_right = 267.168
 offset_bottom = 144.128
 theme_override_font_sizes/normal_font_size = 32
@@ -199,7 +200,7 @@ theme_override_font_sizes/normal_font_size = 32
 text = "00000"
 
 [node name="template-background" type="TextureRect" parent="."]
-modulate = Color(1, 0.18039216, 1, 1)
+modulate = Color(1, 0.180392, 1, 1)
 z_index = -1
 z_as_relative = false
 offset_right = 1152.0
@@ -247,9 +248,9 @@ z_index = 99
 position = Vector2(50, 2)
 
 [node name="game-border-line1" type="NinePatchRect" parent="game-border"]
-offset_left = -0.9999962
+offset_left = -0.999996
 offset_top = 16.0
-offset_right = 2.0000038
+offset_right = 2.0
 offset_bottom = 162.8
 scale = Vector2(5, 5)
 texture = ExtResource("2_72e8q")
@@ -257,54 +258,61 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="game-border-line2" type="NinePatchRect" parent="game-border"]
-offset_left = 14.000004
-offset_right = 141.99998
-offset_bottom = 3.1999998
+offset_left = 14.0
+offset_right = 142.0
+offset_bottom = 3.2
 scale = Vector2(5, 5)
 texture = ExtResource("3_d2op2")
 axis_stretch_horizontal = 1
 
 [node name="game-border-line3" type="NinePatchRect" parent="game-border"]
-offset_left = 654.00006
-offset_top = 16.000002
-offset_right = 657.00006
-offset_bottom = 162.79999
+offset_left = 654.0
+offset_top = 16.0
+offset_right = 657.0
+offset_bottom = 162.8
 scale = Vector2(5, 5)
 texture = ExtResource("2_72e8q")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="game-border-line4" type="NinePatchRect" parent="game-border"]
-offset_left = 14.000004
+offset_left = 14.0
 offset_top = 750.0
-offset_right = 141.99997
+offset_right = 142.0
 offset_bottom = 752.8
 scale = Vector2(5, 5)
 texture = ExtResource("3_d2op2")
 axis_stretch_horizontal = 1
 
 [node name="game-border-corner1" type="Sprite2D" parent="game-border"]
-position = Vector2(6.5, 8.028601)
-rotation = 1.5707964
-scale = Vector2(5.380933, 5)
+position = Vector2(6.5, 8.0286)
+rotation = 1.5708
+scale = Vector2(5.38093, 5)
 texture = ExtResource("4_0rdsr")
 
 [node name="game-border-corner2" type="Sprite2D" parent="game-border"]
-position = Vector2(661.5029, 7.9937215)
-rotation = 3.1415927
+position = Vector2(661.503, 7.99372)
+rotation = 3.14159
 scale = Vector2(5, 5.329)
 texture = ExtResource("4_0rdsr")
 
 [node name="game-border-corner3" type="Sprite2D" parent="game-border"]
-position = Vector2(6.4999995, 757)
-scale = Vector2(5, 4.6666665)
+position = Vector2(6.5, 757)
+scale = Vector2(5, 4.66667)
 texture = ExtResource("4_0rdsr")
 
 [node name="game-border-corner4" type="Sprite2D" parent="game-border"]
-position = Vector2(661.4761, 757.0063)
-rotation = 4.712389
-scale = Vector2(4.6627035, 4.9800167)
+position = Vector2(661.476, 757.006)
+rotation = 4.71239
+scale = Vector2(4.6627, 4.98002)
 texture = ExtResource("4_0rdsr")
+
+[node name="time" type="Label" parent="."]
+offset_left = 745.0
+offset_top = 365.0
+offset_right = 790.0
+offset_bottom = 398.0
+script = ExtResource("12_5pt6e")
 
 [connection signal="pressed" from="pause-menu/VBoxContainer/resume" to="pause-menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="pause-menu/VBoxContainer/restart" to="pause-menu" method="_on_restart_pressed"]
