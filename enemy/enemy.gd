@@ -8,7 +8,6 @@ var hp: int
 func setup(spawnpoint: Vector2, new_actions: Array[Action], new_hp: int) -> void:
 	actions = new_actions
 	hp = new_hp
-	
 	position = spawnpoint
 
 func run() -> void:
@@ -17,3 +16,5 @@ func run() -> void:
 		action.setup(self)
 		@warning_ignore("redundant_await")
 		await action.run()
+	
+	print("enemy: ", self , ", action complete")

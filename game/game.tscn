@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c7nys4vbxchxj"]
 
 [ext_resource type="Script" uid="uid://ysefr2f0r0k5" path="res://game/game.gd" id="1_vasa2"]
+[ext_resource type="PackedScene" uid="uid://baxmvecpiqym3" path="res://player/Player.tscn" id="2_vasa2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7iqs"]
+size = Vector2(4, 448)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1rk1"]
 size = Vector2(4, 448)
@@ -14,16 +18,20 @@ metadata/_custom_type_script = "uid://ysefr2f0r0k5"
 
 [node name="Chapters" type="Node" parent="." unique_id=1495966607]
 
+[node name="Player" parent="." unique_id=91950019 instance=ExtResource("2_vasa2")]
+z_index = 20
+position = Vector2(180, 400)
+speed = 200.0
+
 [node name="Background" type="ColorRect" parent="." unique_id=244097874]
 offset_right = 360.0
 offset_bottom = 448.0
 
-[node name="BorderLeft" type="RigidBody2D" parent="." unique_id=834783273]
+[node name="BorderLeft" type="StaticBody2D" parent="." unique_id=671873581]
 position = Vector2(-2, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderLeft" unique_id=1520314900]
-visible = false
-shape = SubResource("RectangleShape2D_l1rk1")
+shape = SubResource("RectangleShape2D_h7iqs")
 
 [node name="ColorRect" type="ColorRect" parent="BorderLeft" unique_id=735758580]
 offset_left = -2.0
@@ -32,11 +40,10 @@ offset_right = 2.0
 offset_bottom = 224.0
 color = Color(0, 0, 0, 0.43529412)
 
-[node name="BorderRight" type="RigidBody2D" parent="." unique_id=1427763325]
+[node name="BorderRight" type="StaticBody2D" parent="." unique_id=1559789703]
 position = Vector2(362, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderRight" unique_id=976210112]
-visible = false
 shape = SubResource("RectangleShape2D_l1rk1")
 
 [node name="ColorRect" type="ColorRect" parent="BorderRight" unique_id=71260453]
@@ -46,7 +53,7 @@ offset_right = 2.0
 offset_bottom = 224.0
 color = Color(0, 0, 0, 0.43529412)
 
-[node name="BorderTop" type="RigidBody2D" parent="." unique_id=649806609]
+[node name="BorderTop" type="StaticBody2D" parent="." unique_id=1438711696]
 position = Vector2(180, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderTop" unique_id=698959948]
@@ -59,7 +66,7 @@ offset_right = 180.0
 offset_bottom = 2.0
 color = Color(0, 0, 0, 0.43529412)
 
-[node name="BorderBottom" type="RigidBody2D" parent="." unique_id=1471649666]
+[node name="BorderBottom" type="StaticBody2D" parent="." unique_id=1370124505]
 position = Vector2(180, 450)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderBottom" unique_id=246545202]
