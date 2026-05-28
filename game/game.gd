@@ -5,7 +5,10 @@ class_name Game
 @export var chapters: Array[Chapter]
 
 func _ready() -> void:
-	Log.add_message("game running")
+	print("game running")
 	GameSession.set_game(self)
 	
+	for chapter: Chapter in chapters:
+		await chapter.run()
 	
+	print("game should have ended now!")

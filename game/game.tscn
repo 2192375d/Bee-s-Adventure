@@ -1,7 +1,27 @@
 [gd_scene format=3 uid="uid://c7nys4vbxchxj"]
 
 [ext_resource type="Script" uid="uid://ysefr2f0r0k5" path="res://game/game.gd" id="1_vasa2"]
+[ext_resource type="Script" uid="uid://cvng41fh2rs6r" path="res://chapter/chapter.gd" id="2_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://baxmvecpiqym3" path="res://player/Player.tscn" id="2_vasa2"]
+[ext_resource type="Script" uid="uid://dp28skslf804j" path="res://action/action.gd" id="3_dxrkv"]
+[ext_resource type="Script" uid="uid://dun0eliyueoin" path="res://action/action_spawn_enemy.gd" id="4_dakft"]
+[ext_resource type="Script" uid="uid://xy43mn27kw1u" path="res://action/position_data.gd" id="5_u5opy"]
+
+[sub_resource type="Resource" id="Resource_u5opy"]
+script = ExtResource("5_u5opy")
+grid_x = 8
+grid_y = 1
+metadata/_custom_type_script = "uid://xy43mn27kw1u"
+
+[sub_resource type="Resource" id="Resource_y36n6"]
+script = ExtResource("4_dakft")
+spawnpoint = SubResource("Resource_u5opy")
+metadata/_custom_type_script = "uid://dun0eliyueoin"
+
+[sub_resource type="Resource" id="Resource_dakft"]
+script = ExtResource("2_4fuuu")
+actions = Array[ExtResource("3_dxrkv")]([SubResource("Resource_y36n6")])
+metadata/_custom_type_script = "uid://cvng41fh2rs6r"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7iqs"]
 size = Vector2(4, 448)
@@ -14,16 +34,18 @@ size = Vector2(360, 4)
 
 [node name="Game" type="Node2D" unique_id=1773648866]
 script = ExtResource("1_vasa2")
+chapters = Array[ExtResource("2_4fuuu")]([SubResource("Resource_dakft")])
 metadata/_custom_type_script = "uid://ysefr2f0r0k5"
-
-[node name="Chapters" type="Node" parent="." unique_id=1495966607]
 
 [node name="Player" parent="." unique_id=91950019 instance=ExtResource("2_vasa2")]
 z_index = 20
 position = Vector2(180, 400)
-speed = 200.0
+speed = 270.0
+focus_speed = 65.0
 
 [node name="Background" type="ColorRect" parent="." unique_id=244097874]
+modulate = Color(0.9965835, 0.8870142, 1, 1)
+z_index = -20
 offset_right = 360.0
 offset_bottom = 448.0
 

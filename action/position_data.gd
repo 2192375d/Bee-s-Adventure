@@ -13,8 +13,8 @@ enum PositionMode {
 		position_mode = value
 		notify_property_list_changed()
 
-@export_range(-2, 17, 1, "prefer_slider") var grid_x: int = 1
-@export_range(-2, 17, 1, "prefer_slider") var grid_y: int = 1
+@export_range(-2, 17, 1, "prefer_slider") var grid_x: int = 7
+@export_range(-2, 17, 1, "prefer_slider") var grid_y: int = 7
 @export var absolute_position: Vector2 = Vector2.ZERO
 
 func _validate_property(property: Dictionary) -> void:

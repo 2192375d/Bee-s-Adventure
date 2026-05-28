@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cyj8tit2w6ujv"]
+
+[ext_resource type="Texture2D" uid="uid://0naq7hg50y2s" path="res://player/bee-bullet/player-bullet-animation-Sheet.png" id="1_j6g8y"]
+[ext_resource type="Script" uid="uid://lsha76dp0nvr" path="res://player/bee-bullet/bee_bullet.gd" id="1_x5dxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5dxm"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3s3m"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqj1l"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tfb0"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocw3j"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g45tw"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wptmd"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib2y4"]
+atlas = ExtResource("1_j6g8y")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cfnlf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5dxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3s3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqj1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tfb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocw3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g45tw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wptmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib2y4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib2y4"]
+size = Vector2(10.999999, 16)
+
+[node name="BeeBullet" type="Area2D" unique_id=1355771500 node_paths=PackedStringArray("animation")]
+rotation = 1.5707964
+script = ExtResource("1_x5dxm")
+animation = NodePath("AnimatedSprite2D")
+metadata/_custom_type_script = "uid://lsha76dp0nvr"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=25688680]
+modulate = Color(1, 1, 1, 0.41568628)
+sprite_frames = SubResource("SpriteFrames_cfnlf")
+frame_progress = 0.74286735
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=333724069]
+position = Vector2(-0.50000024, 2.1855705e-08)
+shape = SubResource("RectangleShape2D_ib2y4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
