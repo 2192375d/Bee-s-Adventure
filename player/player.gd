@@ -7,6 +7,8 @@ class_name Player
 @export var focus_deceleration: float = 2400.0
 @export var spawnpoint: PositionData
 
+@export var animation: AnimatedSprite2D
+
 func _ready() -> void:
 	position = spawnpoint.get_position()
 
@@ -25,3 +27,10 @@ func _physics_process(delta: float) -> void:
 		velocity = current_speed * direction_vector
 
 	move_and_slide()
+
+func _process(_delta: float) -> void:
+	animation.play("default")
+	if Input.is_action_pressed("left"):
+		animation.play("left")
+	if Input.is_action_pressed("right"):
+		animation.play("right")

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://baxmvecpiqym3"]
 
 [ext_resource type="Script" uid="uid://82ecuufsfs51" path="res://player/player.gd" id="1_3c3w1"]
-[ext_resource type="Texture2D" uid="uid://caw584jfbc3f2" path="res://icon.svg" id="1_ulp21"]
 [ext_resource type="Script" uid="uid://xy43mn27kw1u" path="res://action/position_data.gd" id="2_x8kxw"]
 [ext_resource type="Script" uid="uid://dtii8fgd01mp5" path="res://player/hitbox_dot.gd" id="3_83hs8"]
 [ext_resource type="Texture2D" uid="uid://b6gvbwfk206ca" path="res://player/hitbox-dot.png" id="3_wnvi2"]
+[ext_resource type="Texture2D" uid="uid://d1r466g7kvc8c" path="res://player/asset/bee-default.png" id="3_x8kxw"]
+[ext_resource type="Texture2D" uid="uid://cdyy7u1coq6n3" path="res://player/asset/bee-left.png" id="4_gskgj"]
+[ext_resource type="Texture2D" uid="uid://j5sweavlen1v" path="res://player/asset/bee-right.png" id="5_06mnu"]
 
 [sub_resource type="Resource" id="Resource_aqcbf"]
 script = ExtResource("2_x8kxw")
@@ -16,10 +18,26 @@ metadata/_custom_type_script = "uid://xy43mn27kw1u"
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ulp21")
+"texture": ExtResource("3_x8kxw")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gskgj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_06mnu")
+}],
+"loop": true,
+"name": &"right",
 "speed": 5.0
 }]
 
@@ -40,15 +58,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnvi2"]
 radius = 1.0
 
-[node name="Player" type="CharacterBody2D" unique_id=966883940]
+[node name="Player" type="CharacterBody2D" unique_id=966883940 node_paths=PackedStringArray("animation")]
 input_pickable = true
 script = ExtResource("1_3c3w1")
 spawnpoint = SubResource("Resource_aqcbf")
+animation = NodePath("AnimatedSprite2D")
 metadata/_custom_type_script = "uid://82ecuufsfs51"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1001525776]
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3c3w1")
+animation = &"left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345440828]
 shape = SubResource("RectangleShape2D_ulp21")
