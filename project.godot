@@ -21,6 +21,7 @@ GameSession="*uid://cijkp0jr3bi7c"
 Log="*uid://ts02a7pckctx"
 EnemyDB="*uid://cb65amk214q7d"
 Constants="*uid://dl44hewndhgnf"
+Utils="*uid://bxrokalft5y7m"
 
 [display]
 
@@ -30,6 +31,10 @@ window/size/mode=3
 window/size/initial_position_type=0
 window/size/resizable=false
 window/stretch/mode="viewport"
+
+[global_group]
+
+Border=""
 
 [input]
 

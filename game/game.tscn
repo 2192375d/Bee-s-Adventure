@@ -1,7 +1,29 @@
 [gd_scene format=3 uid="uid://c7nys4vbxchxj"]
 
 [ext_resource type="Script" uid="uid://ysefr2f0r0k5" path="res://game/game.gd" id="1_vasa2"]
+[ext_resource type="Script" uid="uid://cvng41fh2rs6r" path="res://game/chapter/chapter.gd" id="2_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://baxmvecpiqym3" path="res://player/Player.tscn" id="2_vasa2"]
+[ext_resource type="Script" uid="uid://dp28skslf804j" path="res://action/action.gd" id="3_dxrkv"]
+[ext_resource type="PackedScene" uid="uid://cl8xwiou2wf3k" path="res://enemy/scenes/enemy.tscn" id="4_u5opy"]
+[ext_resource type="Script" uid="uid://dun0eliyueoin" path="res://action/action_spawn_enemy.gd" id="5_y36n6"]
+[ext_resource type="Script" uid="uid://xy43mn27kw1u" path="res://position_data.gd" id="6_l8g03"]
+[ext_resource type="Texture2D" uid="uid://dqvicg7166xwb" path="res://other-assets/background.png" id="8_y36n6"]
+
+[sub_resource type="Resource" id="Resource_y36n6"]
+script = ExtResource("6_l8g03")
+metadata/_custom_type_script = "uid://xy43mn27kw1u"
+
+[sub_resource type="Resource" id="Resource_dakft"]
+script = ExtResource("5_y36n6")
+enemy_scene = ExtResource("4_u5opy")
+spawnpoint = SubResource("Resource_y36n6")
+hp = 2
+metadata/_custom_type_script = "uid://dun0eliyueoin"
+
+[sub_resource type="Resource" id="Resource_l8g03"]
+script = ExtResource("2_4fuuu")
+actions = Array[ExtResource("3_dxrkv")]([SubResource("Resource_dakft")])
+metadata/_custom_type_script = "uid://cvng41fh2rs6r"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7iqs"]
 size = Vector2(4, 448)
@@ -12,22 +34,17 @@ size = Vector2(4, 448)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vasa2"]
 size = Vector2(360, 4)
 
-[node name="Game" type="Node2D" unique_id=1773648866]
+[node name="Game" type="Node2D" unique_id=1773648866 node_paths=PackedStringArray("player")]
 script = ExtResource("1_vasa2")
+chapters = Array[ExtResource("2_4fuuu")]([SubResource("Resource_l8g03")])
+player = NodePath("Player")
 metadata/_custom_type_script = "uid://ysefr2f0r0k5"
-
-[node name="Chapters" type="Node" parent="." unique_id=1495966607]
 
 [node name="Player" parent="." unique_id=91950019 instance=ExtResource("2_vasa2")]
 z_index = 20
 position = Vector2(180, 400)
-speed = 200.0
 
-[node name="Background" type="ColorRect" parent="." unique_id=244097874]
-offset_right = 360.0
-offset_bottom = 448.0
-
-[node name="BorderLeft" type="StaticBody2D" parent="." unique_id=671873581]
+[node name="BorderLeft" type="StaticBody2D" parent="." unique_id=671873581 groups=["Border"]]
 position = Vector2(-2, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderLeft" unique_id=1520314900]
@@ -40,7 +57,7 @@ offset_right = 2.0
 offset_bottom = 224.0
 color = Color(0, 0, 0, 0.43529412)
 
-[node name="BorderRight" type="StaticBody2D" parent="." unique_id=1559789703]
+[node name="BorderRight" type="StaticBody2D" parent="." unique_id=1559789703 groups=["Border"]]
 position = Vector2(362, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderRight" unique_id=976210112]
@@ -53,7 +70,7 @@ offset_right = 2.0
 offset_bottom = 224.0
 color = Color(0, 0, 0, 0.43529412)
 
-[node name="BorderTop" type="StaticBody2D" parent="." unique_id=1438711696]
+[node name="BorderTop" type="StaticBody2D" parent="." unique_id=1438711696 groups=["Border"]]
 position = Vector2(180, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderTop" unique_id=698959948]
@@ -66,7 +83,7 @@ offset_right = 180.0
 offset_bottom = 2.0
 color = Color(0, 0, 0, 0.43529412)
 
-[node name="BorderBottom" type="StaticBody2D" parent="." unique_id=1370124505]
+[node name="BorderBottom" type="StaticBody2D" parent="." unique_id=1370124505 groups=["Border"]]
 position = Vector2(180, 450)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BorderBottom" unique_id=246545202]
@@ -78,3 +95,16 @@ offset_top = -2.0
 offset_right = 180.0
 offset_bottom = 2.0
 color = Color(0, 0, 0, 0.43529412)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1090104896]
+z_index = -10
+offset_right = 360.0
+offset_bottom = 448.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2049217621]
+modulate = Color(1, 1, 1, 0.70980394)
+z_index = -5
+offset_right = 360.0
+offset_bottom = 448.0
+texture = ExtResource("8_y36n6")
+expand_mode = 1

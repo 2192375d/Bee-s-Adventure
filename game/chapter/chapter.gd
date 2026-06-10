@@ -1,7 +1,15 @@
-@abstract class_name Chapter
+class_name Chapter
 
-extends Node
+extends Resource
 
-@abstract func setup() -> void
+@export var actions: Array[Action]
 
-@abstract func run() -> void
+func run() -> void:
+	print("chapter: ", self, " started")
+	var context: ActionContext = ActionContext.new()
+	
+	for action: Action in actions:
+		@warning_ignore("redundant_await")
+		await action.run(context)
+	
+	print("chatper: ", self, " ended")
