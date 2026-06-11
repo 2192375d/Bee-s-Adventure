@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cbr6n8jecj1l7"]
+
+[ext_resource type="Script" uid="uid://crbjckd5fut72" path="res://bullet/bullet.gd" id="1_5d85f"]
+[ext_resource type="Texture2D" uid="uid://dkf24seli3drj" path="res://bullet/spike.png" id="2_5d85f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5d85f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5d85f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bullet" type="Area2D" unique_id=161163662 node_paths=PackedStringArray("animation")]
+z_index = 4096
+script = ExtResource("1_5d85f")
+speed = 10.0
+direction = 1.0
+animation = NodePath("AnimatedSprite2D")
+metadata/_custom_type_script = "uid://crbjckd5fut72"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1618633331]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_5d85f")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1547567186]
+polygon = PackedVector2Array(-6, -4, 6, 0, -6, 4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

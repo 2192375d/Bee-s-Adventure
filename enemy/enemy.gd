@@ -10,8 +10,7 @@ func setup(spawnpoint: Vector2, new_actions: Array[Action], new_hp: int) -> void
 	hp = new_hp
 	position = spawnpoint
 
-func run() -> void:
-	
+func _ready() -> void:
 	for action: Action in actions:
 		action.setup(self)
 		@warning_ignore("redundant_await")

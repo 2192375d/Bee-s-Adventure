@@ -1,5 +1,7 @@
 extends Action
 
+class_name ActionSpawnEnemy
+
 enum SpawnpointMode {
 	GRID = 0,
 	ABSOLUTE = 1

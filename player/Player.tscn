@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://baxmvecpiqym3"]
 
 [ext_resource type="Script" uid="uid://82ecuufsfs51" path="res://player/player.gd" id="1_3c3w1"]
-[ext_resource type="Script" uid="uid://xy43mn27kw1u" path="res://action/position_data.gd" id="2_x8kxw"]
+[ext_resource type="Script" uid="uid://xy43mn27kw1u" path="res://position_data.gd" id="2_x8kxw"]
 [ext_resource type="Script" uid="uid://dtii8fgd01mp5" path="res://player/hitbox_dot.gd" id="3_83hs8"]
 [ext_resource type="Texture2D" uid="uid://b6gvbwfk206ca" path="res://player/hitbox-dot.png" id="3_wnvi2"]
 [ext_resource type="Texture2D" uid="uid://d1r466g7kvc8c" path="res://player/asset/bee-default.png" id="3_x8kxw"]
@@ -61,6 +61,7 @@ radius = 1.0
 [node name="Player" type="CharacterBody2D" unique_id=966883940 node_paths=PackedStringArray("animation")]
 input_pickable = true
 script = ExtResource("1_3c3w1")
+speed = 240.0
 spawnpoint = SubResource("Resource_aqcbf")
 animation = NodePath("AnimatedSprite2D")
 metadata/_custom_type_script = "uid://82ecuufsfs51"
@@ -69,7 +70,6 @@ metadata/_custom_type_script = "uid://82ecuufsfs51"
 position = Vector2(0, -11)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3c3w1")
-animation = &"left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345440828]
 shape = SubResource("RectangleShape2D_ulp21")
@@ -79,7 +79,7 @@ script = ExtResource("3_83hs8")
 metadata/_custom_type_script = "uid://dtii8fgd01mp5"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="HitboxDot" unique_id=862461416]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_83hs8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxDot" unique_id=1906681051]
