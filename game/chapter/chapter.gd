@@ -6,10 +6,9 @@ extends Resource
 
 func run() -> void:
 	print("chapter: ", self, " started")
-	var context: ActionContext = ActionContext.new()
 	
 	for action: Action in actions:
 		@warning_ignore("redundant_await")
-		await action.run(context)
+		await action.run()
 	
 	print("chatper: ", self, " ended")

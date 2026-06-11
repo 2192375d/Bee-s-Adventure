@@ -12,7 +12,7 @@ enum SpawnpointMode {
 @export var actions: Array[Action]
 @export var hp: int
 
-func run(_context: ActionContext) -> void:
+func run() -> void:
 	var enemy: Enemy = enemy_scene.instantiate()
 	enemy.setup(spawnpoint.get_position(), actions, hp)
 	GameSession.get_game().add_child(enemy)

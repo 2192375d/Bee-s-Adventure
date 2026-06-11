@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0hb0r52np432"]
+
+[ext_resource type="PackedScene" uid="uid://c7nys4vbxchxj" path="res://game/game.tscn" id="1_dox7j"]
+[ext_resource type="Texture2D" uid="uid://ds5xvrtbe0hlh" path="res://other-assets/main-game.png" id="2_0r78k"]
+
+[node name="MainGame" type="Control" unique_id=332004519]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1725621398]
+layout_mode = 0
+anchor_right = 16.0
+anchor_bottom = 12.0
+texture = ExtResource("2_0r78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="Game" parent="." unique_id=1773648866 instance=ExtResource("1_dox7j")]
+position = Vector2(16, 16)

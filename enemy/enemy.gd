@@ -11,11 +11,9 @@ func setup(spawnpoint: Vector2, new_actions: Array[Action], new_hp: int) -> void
 	position = spawnpoint
 
 func _ready() -> void:
-	var context: ActionContext = ActionContext.new()
-	context.owner = self
-	
 	for action: Action in actions:
+		action.setup(self)
 		@warning_ignore("redundant_await")
-		await action.run(context)
+		await action.run()
 	
 	print("enemy: ", self , ", action complete")

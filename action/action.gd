@@ -2,4 +2,9 @@
 
 extends Resource
 
-@abstract func run(context: ActionContext) -> void
+var actor: Node2D
+
+@abstract func run() -> void
+
+func setup(new_actor: Node2D) -> void:
+	actor = new_actor

@@ -4,25 +4,12 @@
 [ext_resource type="Script" uid="uid://cvng41fh2rs6r" path="res://game/chapter/chapter.gd" id="2_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://baxmvecpiqym3" path="res://player/Player.tscn" id="2_vasa2"]
 [ext_resource type="Script" uid="uid://dp28skslf804j" path="res://action/action.gd" id="3_dxrkv"]
-[ext_resource type="PackedScene" uid="uid://cl8xwiou2wf3k" path="res://enemy/scenes/enemy.tscn" id="4_u5opy"]
-[ext_resource type="Script" uid="uid://dun0eliyueoin" path="res://action/action_spawn_enemy.gd" id="5_y36n6"]
-[ext_resource type="Script" uid="uid://xy43mn27kw1u" path="res://position_data.gd" id="6_l8g03"]
+[ext_resource type="Resource" uid="uid://dcg4fiyvpxsgr" path="res://action/resources/action_spawn_enemy_template.tres" id="4_dakft"]
 [ext_resource type="Texture2D" uid="uid://dqvicg7166xwb" path="res://other-assets/background.png" id="8_y36n6"]
 
-[sub_resource type="Resource" id="Resource_y36n6"]
-script = ExtResource("6_l8g03")
-metadata/_custom_type_script = "uid://xy43mn27kw1u"
-
-[sub_resource type="Resource" id="Resource_dakft"]
-script = ExtResource("5_y36n6")
-enemy_scene = ExtResource("4_u5opy")
-spawnpoint = SubResource("Resource_y36n6")
-hp = 2
-metadata/_custom_type_script = "uid://dun0eliyueoin"
-
-[sub_resource type="Resource" id="Resource_l8g03"]
+[sub_resource type="Resource" id="Resource_dxrkv"]
 script = ExtResource("2_4fuuu")
-actions = Array[ExtResource("3_dxrkv")]([SubResource("Resource_dakft")])
+actions = Array[ExtResource("3_dxrkv")]([ExtResource("4_dakft")])
 metadata/_custom_type_script = "uid://cvng41fh2rs6r"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7iqs"]
@@ -36,13 +23,14 @@ size = Vector2(360, 4)
 
 [node name="Game" type="Node2D" unique_id=1773648866 node_paths=PackedStringArray("player")]
 script = ExtResource("1_vasa2")
-chapters = Array[ExtResource("2_4fuuu")]([SubResource("Resource_l8g03")])
+chapters = Array[ExtResource("2_4fuuu")]([SubResource("Resource_dxrkv")])
 player = NodePath("Player")
 metadata/_custom_type_script = "uid://ysefr2f0r0k5"
 
 [node name="Player" parent="." unique_id=91950019 instance=ExtResource("2_vasa2")]
 z_index = 20
 position = Vector2(180, 400)
+speed = 280.0
 
 [node name="BorderLeft" type="StaticBody2D" parent="." unique_id=671873581 groups=["Border"]]
 position = Vector2(-2, 224)

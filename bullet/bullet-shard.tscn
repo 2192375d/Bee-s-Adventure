@@ -115,5 +115,4 @@ rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_56lgj")
 frame_progress = 0.9406068
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

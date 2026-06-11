@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ActionAttackGeneral1" format=3 uid="uid://pub78m0q8a1r"]
+
+[ext_resource type="Script" uid="uid://cw84ppdwqxdnq" path="res://action/action_attack_general1.gd" id="1_hny3b"]
+[ext_resource type="PackedScene" uid="uid://vf5gjkugss73" path="res://bullet/bullet-shard.tscn" id="1_kpkho"]
+[ext_resource type="PackedScene" uid="uid://cbr6n8jecj1l7" path="res://bullet/bullet-spike.tscn" id="3_5npab"]
+
+[resource]
+script = ExtResource("1_hny3b")
+central_bullet_scene = ExtResource("1_kpkho")
+side_bullet_scene = ExtResource("3_5npab")
+delay1 = 0.2
+speed1 = 170.0
+delay2 = 0.1
+speed2 = 200.0
+number_of_repeats = 5
+metadata/_custom_type_script = "uid://cw84ppdwqxdnq"

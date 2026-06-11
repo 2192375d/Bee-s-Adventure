@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 GameSession="*uid://cijkp0jr3bi7c"
 Log="*uid://ts02a7pckctx"
-EnemyDB="*uid://cb65amk214q7d"
 Constants="*uid://dl44hewndhgnf"
 Utils="*uid://bxrokalft5y7m"
 

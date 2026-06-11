@@ -5,7 +5,10 @@ class_name ActionRunParallel
 @export var actions: Array[Action]
 
 
-func run(context: ActionContext) -> void:
+func run() -> void:
+	assert(actor != null)
+	
 	for action: Action in actions:
 		assert(action != null)
-		action.run(context)
+		action.setup(actor)
+		action.run()
